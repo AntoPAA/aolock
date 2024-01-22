@@ -1,7 +1,11 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
 import video from "../public/aolockvid.mp4";
+import Carrousel from "../components/Carrousel";
 
 function HomePage() {
+  const allProductData = useLoaderData();
+
   return (
     <div>
       HomePage
@@ -12,6 +16,7 @@ function HomePage() {
           Your browser does not support the video tag.
         </video>
       </div>
+      <Carrousel products={allProductData} />
     </div>
   );
 }
