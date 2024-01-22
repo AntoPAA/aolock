@@ -1,4 +1,46 @@
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null
+create table role (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  label VARCHAR(255) NOT NULL
+);
+
+create table size (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  label VARCHAR(255) NOT NULL
+);
+
+create table type (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  label VARCHAR(255) NOT NULL
+);
+
+create table product (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name varchar(255) not null,
+  price INT NOT NULL,
+  description TEXT NOT NULL,
+  img_front VARCHAR(255) NOT NULL,
+  img_back VARCHAR(255) NOT NULL,
+  img_zoom VARCHAR(255) NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  size_id INTEGER NOT NULL,
+  FOREIGN KEY (size_id) REFERENCES size(id) ON DELETE CASCADE,
+  type_id INTEGER NOT NULL,
+  FOREIGN KEY (type_id) REFERENCES type(id) ON DELETE CASCADE
+);
+
+create table stock (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  stock INT NOT NULL,
+  product_id INTEGER NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
+);
+
+create table customer (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  firstname VARCHAR(255) NOT NULL,
+  lastname VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL unique,
+  password VARCHAR(255) NOT NULL,
+  role_id INTEGER NOT NULL DEFAULT 1,
+  FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE
 );
