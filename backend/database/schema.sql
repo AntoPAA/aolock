@@ -13,6 +13,11 @@ create table type (
   label VARCHAR(255) NOT NULL
 );
 
+create table season (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  label VARCHAR(255) NOT NULL
+);
+
 create table product (
   id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
   name varchar(255) not null,
@@ -25,7 +30,9 @@ create table product (
   size_id INTEGER NOT NULL,
   FOREIGN KEY (size_id) REFERENCES size(id) ON DELETE CASCADE,
   type_id INTEGER NOT NULL,
-  FOREIGN KEY (type_id) REFERENCES type(id) ON DELETE CASCADE
+  FOREIGN KEY (type_id) REFERENCES type(id) ON DELETE CASCADE,
+    season_id INTEGER NOT NULL,
+  FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE
 );
 
 create table stock (
