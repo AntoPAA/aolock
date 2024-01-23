@@ -7,6 +7,7 @@ import connexion from "./services/connexion";
 import App from "./App";
 import HomePage from "./pages/HomePage";
 import SeasonPage from "./pages/SeasonPage";
+import Administration from "./pages/Administration";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
           const response = await connexion.get(`/products/season/winter`);
           return response.data;
         },
+      },
+      {
+        path: "/administration",
+        element: <Administration />,
       },
     ],
   },
