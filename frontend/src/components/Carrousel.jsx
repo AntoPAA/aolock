@@ -8,11 +8,10 @@ import "./Carrousel.css";
 
 function Carrousel({ products }) {
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToScroll: 1,
-    slidesToShow: 4,
+    slidesToShow: 6,
     initialSlide: 0,
     autoplay: true,
     autoplaySpeed: 4000,
@@ -21,7 +20,6 @@ function Carrousel({ products }) {
   return (
     <div className="carousel-wrapper">
       <Slider
-        dots={settings.dots}
         infinite={settings.infinite}
         speed={settings.speed}
         slidesToScroll={settings.slidesToScroll}
@@ -44,9 +42,6 @@ Carrousel.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      img_front: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
     })
   ).isRequired,
 };
