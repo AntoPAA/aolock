@@ -63,6 +63,15 @@ const browseLatest = async (req, res, next) => {
   }
 };
 
+const browseBySeasonId = async (req, res, next) => {
+  try {
+    const seasonId = 1;
+    const products = await tables.product.readBySeasonId(seasonId);
+    res.status(200).json(products);
+  } catch (err) {
+    next(err);
+  }
+};
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -73,5 +82,6 @@ module.exports = {
   // edit,
   add,
   browseLatest,
+  browseBySeasonId,
   // destroy,
 };

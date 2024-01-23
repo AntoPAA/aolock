@@ -25,7 +25,7 @@ create table season (
   label VARCHAR(255) NOT NULL
 );
 
-INSERT INTO season (label) VALUES ('Season1');
+INSERT INTO season (label) VALUES ('Winter');
 INSERT INTO season (label) VALUES ('Season2');
 
 create table product (

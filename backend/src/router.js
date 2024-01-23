@@ -21,6 +21,8 @@ router.post("/items", itemControllers.add);
 
 router.get("/products/latest", productControllers.browseLatest);
 
+router.get("/products/season/winter", productControllers.browseBySeasonId);
+
 /* ************************************************************************* */
 
 module.exports = router;

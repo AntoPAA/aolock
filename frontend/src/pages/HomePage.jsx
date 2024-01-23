@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import video from "../public/aolockvid.mp4";
 import Carrousel from "../components/Carrousel";
 
@@ -17,6 +17,16 @@ function HomePage() {
         </video>
       </div>
       <Carrousel products={allProductData} />
+      <div className="winter">
+        <Link to="/products/season/winter">
+          <img
+            src="https://d12oh2gzettinl.cloudfront.net/instagram-story/posts/neoncityracingteam/418524106_18301898956120118_5643698922623944691_n.jpg"
+            alt="Winter"
+          />
+          <h2>Winter 2024</h2>
+          <h3>Shop now</h3>
+        </Link>
+      </div>
     </div>
   );
 }
