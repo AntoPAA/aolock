@@ -9,14 +9,25 @@ class ProductManager extends AbstractManager {
 
   // The C of CRUD - Create operation
 
-  async create(item) {
-    // Execute the SQL INSERT query to add a new item to the "item" table
+  async create(product) {
+    // Extract product properties for insertion
+    // Execute the SQL INSERT query to add a new product to the "product" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title) values (?)`,
-      [item.title]
+      `INSERT INTO ${this.table} (name, price, description, img_front, img_back, img_zoom, size_id, type_id, season_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        product.name,
+        product.price,
+        product.description,
+        product.img_front,
+        product.img_back,
+        product.img_zoom,
+        product.size_id,
+        product.type_id,
+        product.season_id,
+      ]
     );
 
-    // Return the ID of the newly inserted item
+    // Return the ID of the newly inserted product
     return result.insertId;
   }
 
