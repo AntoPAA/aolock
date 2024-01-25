@@ -34,13 +34,19 @@ class ProductManager extends AbstractManager {
   // The Rs of CRUD - Read operations
 
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    // Execute the SQL SELECT query to retrieve a specific product by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `SELECT product.id, product.name, product.price, product.description, product.img_front, product.img_back, product.img_zoom, product.created_at, 
+      size.label AS size_label, type.label AS type_label, season.label AS season_label
+      FROM product
+      INNER JOIN size ON product.size_id = size.id
+      INNER JOIN type ON product.type_id = type.id
+      INNER JOIN season ON product.season_id = season.id
+      WHERE product.id = ?`,
       [id]
     );
 
-    // Return the first row of the result, which represents the item
+    // Return the first row of the result, which represents the product
     return rows[0];
   }
 
@@ -67,6 +73,14 @@ class ProductManager extends AbstractManager {
     );
 
     return rows;
+  }
+
+  async delete(id) {
+    const result = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id = ?`,
+      [id]
+    );
+    return result;
   }
 
   // The U of CRUD - Update operation
