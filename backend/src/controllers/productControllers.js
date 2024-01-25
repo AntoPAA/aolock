@@ -87,11 +87,32 @@ const destroy = async (req, res, next) => {
 };
 // This operation is not yet implemented
 
+const edit = async (req, res, next) => {
+  // Extract the article data from the request body
+  const product = req.body;
+
+  try {
+    // Insert the article into the database
+    const result = await tables.product.update(req.params.id, product);
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted article
+    if (result.affectedRows === 1) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    // Log the error
+
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // Ready to export the controller functions
 module.exports = {
   browse,
   read,
-  // edit,
+  edit,
   add,
   browseLatest,
   browseBySeasonId,

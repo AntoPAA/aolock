@@ -6,13 +6,15 @@ const productSchema = Joi.object({
   description: Joi.string().required(),
   img_front: Joi.string().max(255).required(),
   img_back: Joi.string().max(255).required(),
-  img_zoom: Joi.string().max(255).allow(null),
-  size_id: Joi.number().integer().required(),
-  type_id: Joi.number().integer().required(),
-  season_id: Joi.number().integer().required(),
+  img_zoom: Joi.string().max(255),
+  size_id: Joi.number().required(),
+  type_id: Joi.number().required(),
+  season_id: Joi.number().required(),
+  created_at: Joi.date().optional(),
 });
 
 const validateProduct = (req, res, next) => {
+  delete req.body.id;
   const { error } = productSchema.validate(req.body);
 
   if (error) {

@@ -36,13 +36,13 @@ create table product (
   img_front VARCHAR(255) NOT NULL,
   img_back VARCHAR(255) NOT NULL,
   img_zoom VARCHAR(255) NULL,
-  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  size_id INTEGER NOT NULL,
-  FOREIGN KEY (size_id) REFERENCES size(id) ON DELETE CASCADE,
-  type_id INTEGER NOT NULL,
-  FOREIGN KEY (type_id) REFERENCES type(id) ON DELETE CASCADE,
-    season_id INTEGER NOT NULL,
-  FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE
+  size_id INT,
+   CONSTRAINT fk_product_by_size FOREIGN KEY (size_id) REFERENCES size(id) ON DELETE CASCADE,
+  type_id INT,
+   CONSTRAINT fk_product_by_type FOREIGN KEY (type_id) REFERENCES type(id) ON DELETE CASCADE,
+    season_id INT,
+   CONSTRAINT fk_product_by_season FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO product (name, price, description, img_front, img_back, img_zoom, size_id, type_id, season_id) VALUES ('Product1', 19.99, 'Description for Product1', 'https://example.com/front1.jpg', 'https://example.com/back1.jpg', 'https://example.com/zoom1.jpg', 1, 1, 1);
