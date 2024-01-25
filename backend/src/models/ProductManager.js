@@ -36,13 +36,13 @@ class ProductManager extends AbstractManager {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific product by its ID
     const [rows] = await this.database.query(
-      `SELECT product.id, product.name, product.price, product.description, product.img_front, product.img_back, product.img_zoom, product.created_at, 
-      size.label AS size_label, type.label AS type_label, season.label AS season_label
-      FROM product
-      INNER JOIN size ON product.size_id = size.id
-      INNER JOIN type ON product.type_id = type.id
-      INNER JOIN season ON product.season_id = season.id
-      WHERE product.id = ?`,
+      `SELECT product.id, product.name, product.price, product.description, product.img_front, product.img_back, product.img_zoom, product.created_at,
+      size.label , type.label , season.label
+      FROM ${this.table}
+      INNER JOIN size ON size.id = ${this.table}.size_id
+      INNER JOIN type ON type.id = ${this.table}.type_id
+      INNER JOIN season ON season.id = ${this.table}.season_id
+      WHERE ${this.table}.id = ?`,
       [id]
     );
 
@@ -80,6 +80,29 @@ class ProductManager extends AbstractManager {
       `DELETE FROM ${this.table} WHERE id = ?`,
       [id]
     );
+    return result;
+  }
+
+  async update(id, product) {
+    // Extract product properties for insertion
+    // Execute the SQL INSERT query to add a new product to the "product" table
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET name = ?, price = ?, description = ?, img_front = ?, img_back = ?, img_zoom = ?, size_id = ?, type_id = ?, season_id = ? WHERE id = ? `,
+      [
+        product.name,
+        product.price,
+        product.description,
+        product.img_front,
+        product.img_back,
+        product.img_zoom,
+        product.size_id,
+        product.type_id,
+        product.season_id,
+        id,
+      ]
+    );
+
+    // Return the ID of the newly inserted product
     return result;
   }
 
