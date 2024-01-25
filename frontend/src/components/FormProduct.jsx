@@ -76,6 +76,27 @@ function ProductForm() {
     event.preventDefault();
     try {
       await connexion.post("/products", product);
+      getProducts();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteProduct = async (id) => {
+    try {
+      await connexion.delete(`/products/${id}`);
+      getProducts();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const loadProduct = async (id) => {
+    try {
+      const loadedProduct = await connexion
+        .get(`/products/${id}`)
+        .then((res) => res.data);
+      setProduct(loadedProduct);
     } catch (error) {
       console.error(error);
     }
@@ -198,6 +219,16 @@ function ProductForm() {
                 <td>{prod.price}</td>
                 <td>
                   <img src={prod.img_front} alt={`Product: ${prod.name}`} />
+                </td>
+                <td>
+                  <button type="button" onClick={() => loadProduct(prod.id)}>
+                    PUT
+                  </button>
+                </td>
+                <td>
+                  <button type="button" onClick={() => deleteProduct(prod.id)}>
+                    del
+                  </button>
                 </td>
               </tr>
             ))}

@@ -26,6 +26,8 @@ router.post("/items", itemControllers.add);
 
 router.get("/products", productControllers.browse);
 
+router.get("/products/:id", productControllers.read);
+
 router.get("/products/latest", productControllers.browseLatest);
 
 router.get("/products/season/winter", productControllers.browseBySeasonId);
@@ -37,6 +39,8 @@ router.get("/types", typeControllers.browse);
 router.get("/sizes", sizeControllers.browse);
 
 router.post("/products", validateProduct, productControllers.add);
+
+router.delete("/products/:id", productControllers.destroy);
 
 /* ************************************************************************* */
 
