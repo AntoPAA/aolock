@@ -8,9 +8,14 @@ const productType = {
   img_front: "",
   img_back: "",
   img_zoom: "",
-  size_id: null,
   type_id: null,
   season_id: null,
+  quantity_XS: 0,
+  quantity_S: 0,
+  quantity_M: 0,
+  quantity_L: 0,
+  quantity_XL: 0,
+  quantity_XXL: 0,
 };
 
 function ProductForm() {
@@ -69,6 +74,13 @@ function ProductForm() {
     setProduct((previousState) => ({
       ...previousState,
       [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleSizeQuantity = (event) => {
+    setProduct((prevProduct) => ({
+      ...prevProduct,
+      [event.target.id]: event.target.value,
     }));
   };
 
@@ -165,17 +177,6 @@ function ProductForm() {
           />
         </label>
         <label>
-          Size
-          <select name="size_id" onChange={handleProduct} required>
-            <option value={null}>Select Size</option>
-            {sizes.map((size) => (
-              <option value={size.id} key={size.id}>
-                {size.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
           Type
           <select name="type_id" onChange={handleProduct} required>
             <option value={null}>Select Type</option>
@@ -197,6 +198,17 @@ function ProductForm() {
             ))}
           </select>
         </label>
+        {sizes.map((size) => (
+          <label key={size.id}>
+            {size.label}
+            <input
+              type="number"
+              name={`quantity_${size.id}`}
+              value={product[`quantity_${size.id}`] || ""}
+              onChange={(event) => handleSizeQuantity(event, size.id)}
+            />
+          </label>
+        ))}
         <button type="submit">Add Product</button>
       </form>
 
