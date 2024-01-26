@@ -8,6 +8,7 @@ import App from "./App";
 import HomePage from "./pages/HomePage";
 import SeasonPage from "./pages/SeasonPage";
 import Administration from "./pages/Administration";
+import ProductTypePage from "./pages/ProductTypePage";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
         element: <SeasonPage />,
         loader: async () => {
           const response = await connexion.get(`/products/season/winter`);
+          return response.data;
+        },
+      },
+      {
+        path: "/products/type/:id",
+        element: <ProductTypePage />,
+        loader: async ({ params }) => {
+          const response = await connexion.get(`/products/type/${params.id}`);
           return response.data;
         },
       },

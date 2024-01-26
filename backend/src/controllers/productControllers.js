@@ -63,11 +63,29 @@ const browseLatest = async (req, res, next) => {
   }
 };
 
-const browseBySeasonId = async (req, res, next) => {
+const browseSeason = async (req, res, next) => {
   try {
-    const seasonId = 1;
-    const products = await tables.product.readBySeasonId(seasonId);
-    res.status(200).json(products);
+    const products = await tables.product.readType(req.params.id);
+
+    if (products == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(products);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const browseType = async (req, res, next) => {
+  try {
+    const products = await tables.product.readType(req.params.id);
+
+    if (products == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(products);
+    }
   } catch (err) {
     next(err);
   }
@@ -115,6 +133,7 @@ module.exports = {
   edit,
   add,
   browseLatest,
-  browseBySeasonId,
+  browseSeason,
   destroy,
+  browseType,
 };

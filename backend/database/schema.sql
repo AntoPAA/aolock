@@ -28,20 +28,20 @@ create table season (
 INSERT INTO season (label) VALUES ('Winter');
 INSERT INTO season (label) VALUES ('Season2');
 
-create table product (
+CREATE TABLE product (
   id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  name varchar(255) not null,
+  name VARCHAR(255) NOT NULL,
   price INT NOT NULL,
   description TEXT NOT NULL,
   img_front VARCHAR(255) NOT NULL,
   img_back VARCHAR(255) NOT NULL,
   img_zoom VARCHAR(255) NULL,
   size_id INT,
-   CONSTRAINT fk_product_by_size FOREIGN KEY (size_id) REFERENCES size(id) ON DELETE CASCADE,
+  CONSTRAINT fk_product_by_size FOREIGN KEY (size_id) REFERENCES size(id) ON DELETE CASCADE,
   type_id INT,
-   CONSTRAINT fk_product_by_type FOREIGN KEY (type_id) REFERENCES type(id) ON DELETE CASCADE,
-    season_id INT,
-   CONSTRAINT fk_product_by_season FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE,
+  CONSTRAINT fk_product_by_type FOREIGN KEY (type_id) REFERENCES type(id) ON DELETE CASCADE,
+  season_id INT,
+  CONSTRAINT fk_product_by_season FOREIGN KEY (season_id) REFERENCES season(id) ON DELETE CASCADE,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

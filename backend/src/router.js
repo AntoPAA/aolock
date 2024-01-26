@@ -30,7 +30,9 @@ router.get("/products/latest", productControllers.browseLatest);
 
 router.get("/products/:id", productControllers.read);
 
-router.get("/products/season/winter", productControllers.browseBySeasonId);
+router.get("/products/season/:id", productControllers.browseSeason);
+
+router.get("/products/type/:id", productControllers.browseType);
 
 router.get("/seasons", seasonControllers.browse);
 

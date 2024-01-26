@@ -11,6 +11,12 @@ function NavBar() {
       <Link className="link-page" to="/administration">
         administration
       </Link>
+      <Link className="link-page" to="/products/type/1">
+        Type1
+      </Link>
+      <Link className="link-page" to="/products/type/2">
+        Type2
+      </Link>
     </div>
   );
 }

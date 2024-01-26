@@ -66,10 +66,19 @@ class ProductManager extends AbstractManager {
     return rows;
   }
 
-  async readBySeasonId(seasonId) {
+  async readSeason(seasonId) {
     const [rows] = await this.database.query(
       `SELECT * FROM ${this.table} WHERE season_id = ?`,
       [seasonId]
+    );
+
+    return rows;
+  }
+
+  async readType(typeId) {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE type_id = ?`,
+      [typeId]
     );
 
     return rows;

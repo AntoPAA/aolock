@@ -3,7 +3,7 @@ import connexion from "../services/connexion";
 
 const productType = {
   name: "",
-  price: null,
+  price: 0,
   description: "",
   img_front: "",
   img_back: "",
@@ -66,31 +66,10 @@ function ProductForm() {
   }, []);
 
   const handleProduct = (event) => {
-    if (
-      event.target.name === "size_id" ||
-      event.target.name === "type_id" ||
-      event.target.name === "season_id"
-    ) {
-      setProduct((previousState) => ({
-        ...previousState,
-        [event.target.name]: +event.target.value,
-      }));
-    } else {
-      setProduct((previousState) => ({
-        ...previousState,
-        [event.target.name]: event.target.value,
-      }));
-    }
-  };
-
-  const putProduct = async (event) => {
-    event.preventDefault();
-    try {
-      await connexion.put(`/products/${product.id}`, product);
-      getProducts();
-    } catch (error) {
-      console.error(error);
-    }
+    setProduct((previousState) => ({
+      ...previousState,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   const postProduct = async (event) => {
@@ -112,22 +91,21 @@ function ProductForm() {
     }
   };
 
-  const loadProduct = async (prod) => {
-    setProduct(prod);
-  };
-
-  const handleRequest = (event) => {
-    if (product.id) {
-      putProduct(event);
-    } else {
-      postProduct(event);
+  const loadProduct = async (id) => {
+    try {
+      const loadedProduct = await connexion
+        .get(`/products/${id}`)
+        .then((res) => res.data);
+      setProduct(loadedProduct);
+    } catch (error) {
+      console.error(error);
     }
   };
 
   return (
     <div>
       <h1>Product Form</h1>
-      <form onSubmit={handleRequest}>
+      <form onSubmit={postProduct}>
         <label>
           Name
           <input
@@ -188,12 +166,7 @@ function ProductForm() {
         </label>
         <label>
           Size
-          <select
-            name="size_id"
-            onChange={handleProduct}
-            required
-            value={product.size_id}
-          >
+          <select name="size_id" onChange={handleProduct} required>
             <option value={null}>Select Size</option>
             {sizes.map((size) => (
               <option value={size.id} key={size.id}>
@@ -204,12 +177,7 @@ function ProductForm() {
         </label>
         <label>
           Type
-          <select
-            name="type_id"
-            onChange={handleProduct}
-            required
-            value={product.type_id}
-          >
+          <select name="type_id" onChange={handleProduct} required>
             <option value={null}>Select Type</option>
             {types.map((type) => (
               <option value={type.id} key={type.id}>
@@ -220,12 +188,7 @@ function ProductForm() {
         </label>
         <label>
           Season
-          <select
-            name="season_id"
-            onChange={handleProduct}
-            required
-            value={product.season_id}
-          >
+          <select name="season_id" onChange={handleProduct} required>
             <option value={null}>Select Season</option>
             {seasons.map((season) => (
               <option value={season.id} key={season.id}>
@@ -234,7 +197,7 @@ function ProductForm() {
             ))}
           </select>
         </label>
-        <button type="submit">{product.id ? "Modifier" : "Ajouter"}</button>
+        <button type="submit">Add Product</button>
       </form>
 
       <section>
@@ -258,7 +221,7 @@ function ProductForm() {
                   <img src={prod.img_front} alt={`Product: ${prod.name}`} />
                 </td>
                 <td>
-                  <button type="button" onClick={() => loadProduct(prod)}>
+                  <button type="button" onClick={() => loadProduct(prod.id)}>
                     PUT
                   </button>
                 </td>
