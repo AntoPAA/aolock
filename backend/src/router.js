@@ -12,8 +12,11 @@ const productControllers = require("./controllers/productControllers");
 const seasonControllers = require("./controllers/seasonControllers");
 const typeControllers = require("./controllers/typeControllers");
 const sizeControllers = require("./controllers/sizeControllers");
+const userControllers = require("./controllers/userControllers");
 
 const validateProduct = require("./validators/validateProduct");
+const checkCredentials = require("./middleware/checkCredentials");
+const validateUser = require("./validators/validateUser");
 
 // Route to get a list of items
 router.get("/items", itemControllers.browse);
@@ -45,6 +48,11 @@ router.post("/products", validateProduct, productControllers.add);
 router.put("/products/:id", validateProduct, productControllers.edit);
 
 router.delete("/products/:id", productControllers.destroy);
+
+router.get("/customers/profile", checkCredentials, userControllers.getProfile);
+
+router.post("/login", validateUser, userControllers.login);
+router.post("/register", validateUser, userControllers.add);
 
 /* ************************************************************************* */
 

@@ -3,12 +3,15 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import connexion from "./services/connexion";
+import { AuthProvider } from "./context/auth";
 
 import App from "./App";
 import HomePage from "./pages/HomePage";
 import SeasonPage from "./pages/SeasonPage";
 import Administration from "./pages/Administration";
 import ProductTypePage from "./pages/ProductTypePage";
+import FormLogin from "./pages/FormLogin";
+import FormRegister from "./pages/FormRegister";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,14 @@ const router = createBrowserRouter([
         path: "/administration",
         element: <Administration />,
       },
+      {
+        path: "/login",
+        element: <FormLogin />,
+      },
+      {
+        path: "/register",
+        element: <FormRegister />,
+      },
     ],
   },
 ]);
@@ -51,6 +62,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

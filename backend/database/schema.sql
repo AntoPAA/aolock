@@ -3,6 +3,9 @@ create table role (
   label VARCHAR(255) NOT NULL
 );
 
+INSERT INTO role (label) VALUES ('customer');
+INSERT INTO role (label) VALUES ('admin');
+
 create table size (
   id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
   label VARCHAR(255) NOT NULL
@@ -66,8 +69,8 @@ create table stock (
 
 create table customer (
   id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  firstname VARCHAR(255) NOT NULL,
-  lastname VARCHAR(255) NOT NULL,
+  firstname VARCHAR(255) NULL,
+  lastname VARCHAR(255) NULL,
   email VARCHAR(255) NOT NULL unique,
   password VARCHAR(255) NOT NULL,
   role_id INTEGER NOT NULL DEFAULT 1,
