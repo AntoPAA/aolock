@@ -4,7 +4,8 @@ import { useAuthContext } from "../context/auth";
 import "./NavBar.css";
 
 function NavBar() {
-  const { connected } = useAuthContext();
+  const { connected, logout } = useAuthContext();
+
   return (
     <div className="navbar">
       <Link className="link-page" to="/">
@@ -17,16 +18,21 @@ function NavBar() {
       ) : (
         ""
       )}
-
       <Link className="link-page" to="/products/type/1">
         Type1
       </Link>
       <Link className="link-page" to="/products/type/2">
         Type2
       </Link>
-      <Link className="button-connect" to="/login">
-        Se connecter
-      </Link>
+      {connected !== "not connected" ? (
+        <button type="button" className="button-connect" onClick={logout}>
+          Se déconnecter
+        </button>
+      ) : (
+        <Link className="button-connect" to="/login">
+          Se connecter
+        </Link>
+      )}
     </div>
   );
 }

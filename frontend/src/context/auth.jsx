@@ -16,8 +16,13 @@ export const useAuthContext = () => useContext(AuthContext);
 export function AuthProvider({ children }) {
   const [connected, setConnected] = useState("not connected");
 
+  function logout() {
+    setConnected("not connected");
+    sessionStorage.removeItem("connected");
+  }
+
   const contextValue = useMemo(
-    () => ({ connected, setConnected }),
+    () => ({ connected, setConnected, logout }),
     [connected, setConnected]
   );
   useEffect(() => {

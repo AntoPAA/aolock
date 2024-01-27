@@ -77,7 +77,10 @@ class ProductManager extends AbstractManager {
 
   async readType(typeId) {
     const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table} WHERE type_id = ?`,
+      `SELECT product.*, type.label AS type_label
+       FROM ${this.table}
+       JOIN type ON product.type_id = type.id
+       WHERE type_id = ?`,
       [typeId]
     );
 

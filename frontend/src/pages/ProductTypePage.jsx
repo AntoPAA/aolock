@@ -3,9 +3,10 @@ import { useLoaderData } from "react-router-dom";
 import Allproducts from "../components/AllProductCard";
 
 function ProductTypePage() {
-  const products = useLoaderData();
+  const { products, typeLabel } = useLoaderData();
   return (
     <div>
+      <h1>{typeLabel}</h1>
       ProductTypePage
       <Allproducts products={products} />
     </div>
