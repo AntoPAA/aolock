@@ -33,7 +33,7 @@ function ProductTypePage() {
     <div>
       <h1>{typeLabel}</h1>
       <div>
-        <div style={{ marginBottom: "8px" }}>trier par :</div>
+        <div>trier par :</div>
         <select value={order} onChange={(e) => changeOrder(e.target.value)}>
           <option value="croissant">Tri croissant</option>
           <option value="decroissant">Tri décroissant</option>
