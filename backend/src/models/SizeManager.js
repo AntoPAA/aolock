@@ -40,7 +40,6 @@ class SizeManager extends AbstractManager {
     // Return the array of Sizes
     return rows;
   }
-
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing Size
 
