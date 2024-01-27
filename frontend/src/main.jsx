@@ -39,7 +39,11 @@ const router = createBrowserRouter([
         element: <ProductTypePage />,
         loader: async ({ params }) => {
           const response = await connexion.get(`/products/type/${params.id}`);
-          return response.data;
+          return {
+            products: response.data,
+            typeLabel:
+              response.data.length > 0 ? response.data[0].type_label : null,
+          };
         },
       },
       {
