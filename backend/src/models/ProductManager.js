@@ -34,19 +34,29 @@ class ProductManager extends AbstractManager {
   // The Rs of CRUD - Read operations
 
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific product by its ID
     const [rows] = await this.database.query(
-      `SELECT product.id, product.name, product.price, product.description, product.img_front, product.img_back, product.img_zoom, product.created_at,
-      size.label , type.label , season.label
+      `
+      SELECT
+        product.id,
+        product.name,
+        product.price,
+        product.description,
+        product.img_front,
+        product.img_back,
+        product.img_zoom,
+        product.created_at,
+        size.label AS size_label,
+        type.label AS type_label,
+        season.label AS season_label
       FROM ${this.table}
       INNER JOIN size ON size.id = ${this.table}.size_id
       INNER JOIN type ON type.id = ${this.table}.type_id
       INNER JOIN season ON season.id = ${this.table}.season_id
-      WHERE ${this.table}.id = ?`,
+      WHERE ${this.table}.id = ?
+    `,
       [id]
     );
 
-    // Return the first row of the result, which represents the product
     return rows[0];
   }
 

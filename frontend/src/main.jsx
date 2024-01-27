@@ -12,6 +12,7 @@ import Administration from "./pages/Administration";
 import ProductTypePage from "./pages/ProductTypePage";
 import FormLogin from "./pages/FormLogin";
 import FormRegister from "./pages/FormRegister";
+import OneProduct from "./pages/OneProduct";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,14 @@ const router = createBrowserRouter([
         element: <HomePage />,
         loader: async () => {
           const response = await connexion.get(`/products/latest`);
+          return response.data;
+        },
+      },
+      {
+        path: "/products/:id",
+        element: <OneProduct />,
+        loader: async ({ params }) => {
+          const response = await connexion.get(`/products/${params.id}`);
           return response.data;
         },
       },

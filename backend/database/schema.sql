@@ -11,9 +11,13 @@ create table size (
   label VARCHAR(255) NOT NULL
 );
 
-INSERT INTO size (label) VALUES ('Small');
-INSERT INTO size (label) VALUES ('Medium');
-INSERT INTO size (label) VALUES ('Large');
+
+INSERT INTO size (label) VALUES ('XS');
+INSERT INTO size (label) VALUES ('S');
+INSERT INTO size (label) VALUES ('M');
+INSERT INTO size (label) VALUES ('L');
+INSERT INTO size (label) VALUES ('XL');
+INSERT INTO size (label) VALUES ('XXL');
 
 create table type (
   id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
