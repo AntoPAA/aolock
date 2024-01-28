@@ -1,18 +1,13 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 
 function Allproducts({ products }) {
   return (
-    <Link to={`/products/${products.id}`}>
-      <div>
-        {products.map((product) => (
-          <div key={product.id}>
-            <ProductCard key={product.id} product={product} />
-          </div>
-        ))}
-      </div>
-    </Link>
+    <div>
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
   );
 }
 
