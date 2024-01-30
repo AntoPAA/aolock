@@ -3,7 +3,7 @@ const Joi = require("joi");
 const schema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string()
-    .min(6)
+    .min(8)
     .required()
     .regex(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/, "password")
     .message(

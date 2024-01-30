@@ -24,11 +24,8 @@ const browse = async (req, res, next) => {
 // The R of BREAD - Read operation
 const login = async (req, res, next) => {
   try {
-    // Fetch a specific customer from the database based on the provided ID
     const customer = await tables.customer.read(req.body.email);
 
-    // If the customer is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the customer in JSON format
     if (customer == null) {
       res.sendStatus(403);
     } else {
@@ -36,7 +33,10 @@ const login = async (req, res, next) => {
       if (check) {
         delete customer.password;
         res
-          .cookie("auth", createToken(customer), { httpOnly: true })
+          .cookie("auth", createToken(customer), {
+            httpOnly: true,
+            secure: true,
+          })
           .status(200)
           .json({
             id: customer.id,
@@ -55,10 +55,13 @@ const login = async (req, res, next) => {
 const getProfile = async (req, res, next) => {
   try {
     const profile = await tables.customer.readProfile(req.user.id);
-    res
-      .cookie("auth", createToken(profile), { httpOnly: true })
-      .status(200)
-      .json(profile);
+
+    // Vous pouvez également vérifier ici si le profil existe et gérer les erreurs si nécessaire
+
+    const token = createToken(profile);
+
+    res.cookie("auth", token, { httpOnly: true });
+    res.status(200).json(profile);
   } catch (err) {
     next(err);
   }

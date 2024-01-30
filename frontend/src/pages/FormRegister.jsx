@@ -105,7 +105,7 @@ function FormRegister() {
               className="validate-password"
               style={{ color: validatePassword() ? "green" : "grey" }}
             >
-              Le mot de passe doit comporter au moins 6 caractères, une
+              Le mot de passe doit comporter au moins 8 caractères, une
               majuscule, un caractère spécial, et un chiffre.
             </p>
             <div className="button-container">
