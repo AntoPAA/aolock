@@ -17,17 +17,6 @@ const productType = {
   season_id: null,
 };
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-
 function ProductForm() {
   const [product, setProduct] = useState(productType);
   const [products, setProducts] = useState([]);
@@ -36,6 +25,17 @@ function ProductForm() {
   const [seasons, setSeasons] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [formMode, setFormMode] = useState("add");
+
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
 
   const openModal = (mode) => {
     setFormMode(mode);
@@ -167,7 +167,6 @@ function ProductForm() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Product Form Modal"
       >
         <form onSubmit={handleRequest}>
           <label>

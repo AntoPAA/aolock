@@ -13,6 +13,7 @@ import ProductTypePage from "./pages/ProductTypePage";
 import FormLogin from "./pages/FormLogin";
 import FormRegister from "./pages/FormRegister";
 import OneProduct from "./pages/OneProduct";
+import AccountUser from "./pages/AccountUser";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <FormRegister />,
+      },
+      {
+        path: "/account",
+        element: <AccountUser />,
       },
     ],
   },

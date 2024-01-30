@@ -10,7 +10,6 @@ class ProductManager extends AbstractManager {
   // The C of CRUD - Create operation
 
   async create(product) {
-    // Extract product properties for insertion
     // Execute the SQL INSERT query to add a new product to the "product" table
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (name, price, description, img_front, img_back, img_zoom, size_id, type_id, season_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -106,7 +105,6 @@ class ProductManager extends AbstractManager {
   }
 
   async update(id, product) {
-    // Extract product properties for insertion
     // Execute the SQL INSERT query to add a new product to the "product" table
     const [result] = await this.database.query(
       `UPDATE ${this.table} SET name = ?, price = ?, description = ?, img_front = ?, img_back = ?, img_zoom = ?, size_id = ?, type_id = ?, season_id = ? WHERE id = ? `,
