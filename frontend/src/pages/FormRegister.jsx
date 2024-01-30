@@ -95,7 +95,7 @@ function FormRegister() {
                   placeholder="Confirm Password"
                 />
               </label>
-            </div>{" "}
+            </div>
             {errorMessage && (
               <p className="validate-password" style={{ color: "red" }}>
                 {errorMessage}

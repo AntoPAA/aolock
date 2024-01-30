@@ -54,6 +54,8 @@ router.get("/customers/profile", checkCredentials, userControllers.getProfile);
 router.post("/login", validateUser, userControllers.login);
 router.post("/register", validateUser, userControllers.add);
 
+router.put("/customers/:id/name", checkCredentials, userControllers.updateName);
+
 /* ************************************************************************* */
 
 module.exports = router;

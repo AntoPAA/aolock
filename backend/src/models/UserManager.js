@@ -72,6 +72,14 @@ class UserManager extends AbstractManager {
     return rows[0];
   }
 
+  async updateName(id, lastname, firstname) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET lastname = ?, firstname = ? WHERE id = ?`,
+      [lastname, firstname, id]
+    );
+    return result.affectedRows > 0;
+  }
+
   /*
   async readAll() {
     // Execute the SQL SELECT query to retrieve all users from the "user" table

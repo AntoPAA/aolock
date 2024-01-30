@@ -67,18 +67,26 @@ const getProfile = async (req, res, next) => {
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 
-// The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
-  // Extract the customer data from the request body
-
   try {
     const hashPassword = await hash(req.body.password);
     await tables.customer.create(req.body.email, hashPassword);
-    // Insert the customer into the database
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted customer
     res.status(201).json("OK");
   } catch (err) {
-    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+const updateName = async (req, res, next) => {
+  try {
+    const { lastname, firstname } = req.body;
+    const updatedUser = await tables.customer.updateName(
+      req.params.id,
+      lastname,
+      firstname
+    );
+    res.json(updatedUser);
+  } catch (err) {
     next(err);
   }
 };
@@ -136,4 +144,5 @@ module.exports = {
   // edit,
   add,
   // destroy,
+  updateName,
 };
