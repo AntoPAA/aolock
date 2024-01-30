@@ -56,8 +56,6 @@ const getProfile = async (req, res, next) => {
   try {
     const profile = await tables.customer.readProfile(req.user.id);
 
-    // Vous pouvez également vérifier ici si le profil existe et gérer les erreurs si nécessaire
-
     const token = createToken(profile);
 
     res.cookie("auth", token, { httpOnly: true });
