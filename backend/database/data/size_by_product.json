@@ -1,0 +1,8 @@
+[
+  { "quantity": 10, "size_id": 1, "product_id": 1 },
+  { "quantity": 20, "size_id": 2, "product_id": 1 },
+  { "quantity": 20, "size_id": 3, "product_id": 1 },
+  { "quantity": 20, "size_id": 4, "product_id": 1 },
+  { "quantity": 20, "size_id": 5, "product_id": 1 },
+  { "quantity": 20, "size_id": 6, "product_id": 1 }
+]

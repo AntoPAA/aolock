@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Product1",
+    "price": 19.99,
+    "description": "Description for Product1",
+    "img_front": "https://example.com/front1.jpg",
+    "img_back": "https://example.com/back1.jpg",
+    "img_zoom": "https://example.com/zoom1.jpg",
+    "type_id": 1,
+    "season_id": 1
+  },
+  {
+    "name": "Product2",
+    "price": 29.99,
+    "description": "Description for Product2",
+    "img_front": "https://example.com/front2.jpg",
+    "img_back": "https://example.com/back2.jpg",
+    "img_zoom": "https://example.com/zoom2.jpg",
+    "type_id": 2,
+    "season_id": 2
+  },
+  {
+    "name": "Product3",
+    "price": 39.99,
+    "description": "Description for Product3",
+    "img_front": "https://example.com/front3.jpg",
+    "img_back": "https://example.com/back3.jpg",
+    "img_zoom": "https://example.com/zoom3.jpg",
+    "type_id": 1,
+    "season_id": 2
+  },
+  {
+    "name": "Product4",
+    "price": 49.99,
+    "description": "Description for Product4",
+    "img_front": "https://example.com/front4.jpg",
+    "img_back": "https://example.com/back4.jpg",
+    "img_zoom": "https://example.com/zoom4.jpg",
+    "type_id": 2,
+    "season_id": 1
+  },
+  {
+    "name": "Product5",
+    "price": 59.99,
+    "description": "Description for Product5",
+    "img_front": "https://example.com/front5.jpg",
+    "img_back": "https://example.com/back5.jpg",
+    "img_zoom": "https://example.com/zoom5.jpg",
+    "type_id": 1,
+    "season_id": 2
+  },
+  {
+    "name": "Product6",
+    "price": 69.99,
+    "description": "Description for Product6",
+    "img_front": "https://example.com/front6.jpg",
+    "img_back": "https://example.com/back6.jpg",
+    "img_zoom": "https://example.com/zoom6.jpg",
+    "type_id": 2,
+    "season_id": 1
+  },
+  {
+    "name": "Product7",
+    "price": 79.99,
+    "description": "Description for Product7",
+    "img_front": "https://example.com/front7.jpg",
+    "img_back": "https://example.com/back7.jpg",
+    "img_zoom": "https://example.com/zoom7.jpg",
+    "type_id": 1,
+    "season_id": 2
+  },
+  {
+    "name": "Product8",
+    "price": 89.99,
+    "description": "Description for Product8",
+    "img_front": "https://example.com/front8.jpg",
+    "img_back": "https://example.com/back8.jpg",
+    "img_zoom": "https://example.com/zoom8.jpg",
+    "type_id": 2,
+    "season_id": 1
+  },
+  {
+    "name": "Product9",
+    "price": 99.99,
+    "description": "Description for Product9",
+    "img_front": "https://example.com/front9.jpg",
+    "img_back": "https://example.com/back9.jpg",
+    "img_zoom": "https://example.com/zoom9.jpg",
+    "type_id": 1,
+    "season_id": 2
+  },
+  {
+    "name": "Product10",
+    "price": 109.99,
+    "description": "Description for Product10",
+    "img_front": "https://example.com/front10.jpg",
+    "img_back": "https://example.com/back10.jpg",
+    "img_zoom": "https://example.com/zoom10.jpg",
+    "type_id": 2,
+    "season_id": 1
+  }
+]
