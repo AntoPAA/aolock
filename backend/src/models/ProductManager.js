@@ -11,7 +11,7 @@ class ProductManager extends AbstractManager {
 
   async create(product) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (name, price, description, img_front, img_back, img_zoom, type_id, season_id, quantity) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO ${this.table} (name, price, description, img_front, img_back, img_zoom, type_id, season_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         product.name,
         product.price,
@@ -21,7 +21,6 @@ class ProductManager extends AbstractManager {
         product.img_zoom,
         product.type_id,
         product.season_id,
-        product.quantity,
       ]
     );
 
@@ -43,16 +42,13 @@ class ProductManager extends AbstractManager {
       product.created_at,
       type.id as type_id,
       season.id as season_id,
-      GROUP_CONCAT(size.label) as size_labels,
-      GROUP_CONCAT(stock.quantity) as stock_quantities
+      JSON_ARRAYAGG(JSON_OBJECT('id', size.id, 'label', size.label, 'quantity', size_by_product.quantity)) as stock
   FROM ${this.table}
   INNER JOIN type ON type.id = ${this.table}.type_id
   INNER JOIN season ON season.id = ${this.table}.season_id
   INNER JOIN size_by_product ON size_by_product.product_id = ${this.table}.id
   INNER JOIN size ON size.id = size_by_product.size_id
-  INNER JOIN stock ON stock.size_by_product_id = size_by_product.id
-  WHERE ${this.table}.id = ?
-  GROUP BY ${this.table}.id`,
+  WHERE ${this.table}.id = ?`,
       [id]
     );
 
@@ -106,7 +102,7 @@ class ProductManager extends AbstractManager {
 
   async update(id, product) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table} SET name = ?, price = ?, description = ?, img_front = ?, img_back = ?, img_zoom = ?, size_id = ?, type_id = ?, season_id = ? WHERE id = ? `,
+      `UPDATE ${this.table} SET name = ?, price = ?, description = ?, img_front = ?, img_back = ?, img_zoom = ?, type_id = ?, season_id = ? WHERE id = ? `,
       [
         product.name,
         product.price,
@@ -114,7 +110,6 @@ class ProductManager extends AbstractManager {
         product.img_front,
         product.img_back,
         product.img_zoom,
-        product.size_id,
         product.type_id,
         product.season_id,
         id,

@@ -7,9 +7,11 @@ import NavBarmini from "./NavBarmini";
 function NavBar() {
   const { connected, logout } = useAuthContext();
   const [NavBarMiniVisible, setNavBarMiniVisible] = useState(false);
+  const [isBurgerActive, setIsBurgerActive] = useState(false);
 
   const toggleNavBarMini = () => {
     setNavBarMiniVisible(!NavBarMiniVisible);
+    setIsBurgerActive(!isBurgerActive);
   };
 
   return (

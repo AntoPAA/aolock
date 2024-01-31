@@ -56,6 +56,12 @@ router.post("/register", validateUser, userControllers.add);
 
 router.put("/customers/:id/name", checkCredentials, userControllers.updateName);
 
+router.get("/products/:id/size", sizeControllers.browseSize);
+router.get("/size/:id", sizeControllers.browseAllSize);
+router.put("/size/:id", sizeControllers.UpdateSize);
+router.post("/products/:id/size", sizeControllers.AddSize);
+router.delete("/size/:id", sizeControllers.destroy);
+
 /* ************************************************************************* */
 
 module.exports = router;

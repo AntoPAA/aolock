@@ -9,8 +9,14 @@ const productSchema = Joi.object({
   img_zoom: Joi.string().max(255),
   type_id: Joi.number().required(),
   season_id: Joi.number().required(),
-  quantity: Joi.number().integer().min(0).required(),
   created_at: Joi.date().optional(),
+  stock: Joi.array().items(
+    Joi.object({
+      id: Joi.number().required(),
+      label: Joi.string().required(),
+      quantity: Joi.number().integer().min(0).required(),
+    })
+  ),
 });
 
 const validateProduct = (req, res, next) => {

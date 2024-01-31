@@ -62,33 +62,19 @@ INSERT INTO product (name, price, description, img_front, img_back, img_zoom, ty
 
 CREATE TABLE size_by_product (
   id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    quantity INT NOT NULL,
   size_id INT,
   product_id INT,
   FOREIGN KEY (size_id) REFERENCES size(id) ON DELETE CASCADE,
   FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
 );
 
-INSERT INTO size_by_product (size_id, product_id) VALUES (1, 1);
-INSERT INTO size_by_product (size_id, product_id) VALUES (2, 1);
-INSERT INTO size_by_product (size_id, product_id) VALUES (3, 1);
-INSERT INTO size_by_product (size_id, product_id) VALUES (4, 1);
-INSERT INTO size_by_product (size_id, product_id) VALUES (5, 1);
-INSERT INTO size_by_product (size_id, product_id) VALUES (6, 1);
-
-
-CREATE TABLE stock (
-  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  quantity INT NOT NULL,
-  size_by_product_id INT,
-  FOREIGN KEY (size_by_product_id) REFERENCES size_by_product(id) ON DELETE CASCADE
-);
-
-INSERT INTO stock (quantity, size_by_product_id) VALUES (10, 1);
-INSERT INTO stock (quantity, size_by_product_id) VALUES (20, 2);
-INSERT INTO stock (quantity, size_by_product_id) VALUES (15, 3);
-INSERT INTO stock (quantity, size_by_product_id) VALUES (25, 4);
-INSERT INTO stock (quantity, size_by_product_id) VALUES (18, 5);
-INSERT INTO stock (quantity, size_by_product_id) VALUES (12, 6);
+INSERT INTO size_by_product (quantity, size_id, product_id) VALUES (10, 1, 1);
+INSERT INTO size_by_product (quantity, size_id, product_id) VALUES (20, 2, 1);
+INSERT INTO size_by_product (quantity, size_id, product_id) VALUES (20, 3, 1);
+INSERT INTO size_by_product (quantity, size_id, product_id) VALUES (20, 4, 1);
+INSERT INTO size_by_product (quantity, size_id, product_id) VALUES (20, 5, 1);
+INSERT INTO size_by_product (quantity, size_id, product_id) VALUES (20, 6, 1);
 
 create table customer (
   id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
