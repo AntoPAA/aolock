@@ -1,0 +1,13 @@
+.navbar-mini {
+  position: fixed;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  z-index: 100;
+}
+
+.link-page {
+  margin-right: 10px;
+}
