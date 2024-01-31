@@ -5,9 +5,7 @@ function Allproducts({ products }) {
   return (
     <div>
       {products.map((product) => (
-        <div key={product.id}>
-          <ProductCard key={product.id} product={product} />
-        </div>
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );

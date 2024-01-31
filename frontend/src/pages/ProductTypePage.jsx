@@ -1,13 +1,14 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import Allproducts from "../components/AllProductCard";
+import ProductTypeFilter from "../components/ProductTypeFilter";
 
 function ProductTypePage() {
-  const products = useLoaderData();
+  const { typeLabel } = useLoaderData();
+
   return (
     <div>
-      ProductTypePage
-      <Allproducts products={products} />
+      <h1>{typeLabel}</h1>
+      <ProductTypeFilter />
     </div>
   );
 }
