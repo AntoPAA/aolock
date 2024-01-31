@@ -29,7 +29,7 @@ class ProductManager extends AbstractManager {
 
   // The Rs of CRUD - Read operations
 
-  async read(id) {
+  async read(slug) {
     const [rows] = await this.database.query(
       `SELECT
       product.id,
@@ -48,8 +48,8 @@ class ProductManager extends AbstractManager {
   INNER JOIN season ON season.id = ${this.table}.season_id
   INNER JOIN size_by_product ON size_by_product.product_id = ${this.table}.id
   INNER JOIN size ON size.id = size_by_product.size_id
-  WHERE ${this.table}.id = ?`,
-      [id]
+  WHERE ${this.table}.slug = ?`,
+      [slug]
     );
 
     return rows;

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../context/auth";
 import "./NavBar.css";
 import NavBarmini from "./NavBarmini";
+import MenuBurger from "./MenuBurger";
 
 function NavBar() {
   const { connected, logout } = useAuthContext();
@@ -41,6 +42,9 @@ function NavBar() {
             Se connecter
           </Link>
         )}
+        <div className="burgerVisible">
+          <MenuBurger />
+        </div>
       </div>
 
       {NavBarMiniVisible && <NavBarmini />}

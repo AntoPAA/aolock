@@ -19,6 +19,7 @@ create table season (
 CREATE TABLE product (
   id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
   name VARCHAR(255) NOT NULL,
+  slug VARCHAR(255) NOT NULL unique,
   price INT NOT NULL,
   description TEXT NOT NULL,
   img_front VARCHAR(255) NOT NULL,

@@ -18,7 +18,7 @@ const browse = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
-    const product = await tables.product.read(req.params.id);
+    const product = await tables.product.read(req.params.slug);
 
     if (product == null) {
       res.sendStatus(404);

@@ -1,9 +1,18 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 function OneProduct() {
   const product = useLoaderData();
-  return <div>{product.name}</div>;
+
+  return (
+    <div>
+      <h1>{product.name}</h1>
+      {product.description}
+      <Link to={`/products/${product.id}`}>
+        <h2 className="card-name">{product.name}</h2>
+      </Link>
+    </div>
+  );
 }
 
 export default OneProduct;

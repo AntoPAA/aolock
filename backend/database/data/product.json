@@ -1,6 +1,7 @@
 [
   {
-    "name": "Product1",
+    "id": 1,
+    "name": "Product 1",
     "price": 19.99,
     "description": "Description for Product1",
     "img_front": "https://example.com/front1.jpg",
@@ -10,6 +11,7 @@
     "season_id": 1
   },
   {
+    "id": 2,
     "name": "Product2",
     "price": 29.99,
     "description": "Description for Product2",
@@ -20,6 +22,7 @@
     "season_id": 2
   },
   {
+    "id": 3,
     "name": "Product3",
     "price": 39.99,
     "description": "Description for Product3",
@@ -30,6 +33,7 @@
     "season_id": 2
   },
   {
+    "id": 4,
     "name": "Product4",
     "price": 49.99,
     "description": "Description for Product4",
@@ -40,6 +44,7 @@
     "season_id": 1
   },
   {
+    "id": 5,
     "name": "Product5",
     "price": 59.99,
     "description": "Description for Product5",
@@ -50,6 +55,7 @@
     "season_id": 2
   },
   {
+    "id": 6,
     "name": "Product6",
     "price": 69.99,
     "description": "Description for Product6",
@@ -60,6 +66,7 @@
     "season_id": 1
   },
   {
+    "id": 7,
     "name": "Product7",
     "price": 79.99,
     "description": "Description for Product7",
@@ -70,6 +77,7 @@
     "season_id": 2
   },
   {
+    "id": 8,
     "name": "Product8",
     "price": 89.99,
     "description": "Description for Product8",
@@ -80,6 +88,7 @@
     "season_id": 1
   },
   {
+    "id": 9,
     "name": "Product9",
     "price": 99.99,
     "description": "Description for Product9",
@@ -90,6 +99,7 @@
     "season_id": 2
   },
   {
+    "id": 10,
     "name": "Product10",
     "price": 109.99,
     "description": "Description for Product10",

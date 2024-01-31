@@ -29,11 +29,12 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/products/:id",
+        path: "/products/:slug",
         element: <OneProduct />,
         loader: async ({ params }) => {
-          const response = await connexion.get(`/products/${params.id}`);
-          return response.data;
+          return connexion
+            .get(`/products/${params.slug}`)
+            .then((res) => res.data);
         },
       },
       {

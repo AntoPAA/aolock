@@ -13,3 +13,9 @@
   background-color: #ffffff;
   cursor: pointer;
 }
+
+@media screen and (min-width: 1500px) {
+  .burgerVisible {
+    display: none;
+  }
+}

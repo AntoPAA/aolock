@@ -70,14 +70,18 @@ const seed = async () => {
     }
 
     await Promise.all(seasonQuery);
-
+    /* eslint-disable prefer-destructuring */
     const productQuery = [];
     for (let i = 0; i < product.length; i += 1) {
+      const name = product[i].name;
+      const slug = name.split(" ").join("-").toLowerCase();
       productQuery.push(
         database.query(
-          "insert into product(name, price, description, img_front, img_back, img_zoom, type_id , season_id) values (?, ?, ?, ?, ?, ? , ? ,?)",
+          "insert into product(id, name, slug, price, description, img_front, img_back, img_zoom, type_id , season_id) values (?, ?, ?, ?, ?, ?, ?, ? , ? ,?)",
           [
-            product[i].name,
+            product[i].id,
+            name,
+            slug,
             product[i].price,
             product[i].description,
             product[i].img_front,
@@ -90,7 +94,7 @@ const seed = async () => {
       );
     }
     await Promise.all(productQuery);
-
+    /* eslint-enable prefer-destructuring */
     const sizeQuery = [];
     for (let i = 0; i < size.length; i += 1) {
       sizeQuery.push(
