@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         path: "/products/season/winter",
         element: <SeasonPage />,
         loader: async () => {
-          const response = await connexion.get(`/products/season/winter`);
+          const response = await connexion.get(`/products/season/1`);
           return response.data;
         },
       },
