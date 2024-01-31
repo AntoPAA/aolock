@@ -36,7 +36,10 @@ const login = async (req, res, next) => {
       if (check) {
         delete customer.password;
         res
-          .cookie("auth", createToken(customer), { httpOnly: true })
+          .cookie("auth", createToken(customer), {
+            httpOnly: true,
+            secure: true,
+          })
           .status(200)
           .json({
             id: customer.id,
@@ -56,7 +59,7 @@ const getProfile = async (req, res, next) => {
   try {
     const profile = await tables.customer.readProfile(req.user.id);
     res
-      .cookie("auth", createToken(profile), { httpOnly: true })
+      .cookie("auth", createToken(profile), { httpOnly: true, secure: true })
       .status(200)
       .json(profile);
   } catch (err) {
