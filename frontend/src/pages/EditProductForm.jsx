@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import ProductForm from "../components/FormProduct";
 import connexion from "../services/connexion";
+import SizeForm from "../components/FormSize";
 
 function EditProductForm() {
   const { slug } = useParams();
@@ -23,6 +24,7 @@ function EditProductForm() {
   }, [slug]);
   return (
     <div>
+      <Link to="/administration">Retour à l'administration</Link>
       <h1>Edit {product.name}</h1>
       <ProductForm
         preFilledProduct={product}
@@ -30,7 +32,10 @@ function EditProductForm() {
         seasons={seasons}
         formMode="put"
         hideAllProducts
+        hideForm={false}
+        AddButton
       />
+      <SizeForm />
     </div>
   );
 }

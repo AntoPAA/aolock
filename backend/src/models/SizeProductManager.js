@@ -14,12 +14,12 @@ class SizeManager extends AbstractManager {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific Size by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `select * from ${this.table} where product_id = ?`,
       [id]
     );
 
     // Return the first row of the result, which represents the Size
-    return rows[0];
+    return rows;
   }
 
   async readAll() {

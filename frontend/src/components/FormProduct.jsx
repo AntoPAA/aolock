@@ -17,7 +17,13 @@ const productType = {
   season_id: null,
 };
 
-function ProductForm({ preFilledProduct, hideAllProducts, isCreation }) {
+function ProductForm({
+  preFilledProduct,
+  hideAllProducts,
+  isCreation,
+  hideForm,
+  AddButton,
+}) {
   const navigate = useNavigate();
   const [product, setProduct] = useState(preFilledProduct || productType);
   const [products, setProducts] = useState([]);
@@ -126,102 +132,106 @@ function ProductForm({ preFilledProduct, hideAllProducts, isCreation }) {
 
   return (
     <div>
-      <Link to="/products/add">
-        <button type="button">ADD</button>
-      </Link>
-      <form onSubmit={handleRequest}>
-        <label>
-          Name
-          <input
-            type="text"
-            name="name"
-            required
-            value={product.name}
-            onChange={handleProduct}
-          />
-        </label>
-        <label>
-          Price
-          <input
-            type="number"
-            name="price"
-            required
-            value={product.price}
-            onChange={handleProduct}
-          />
-        </label>
-        <label>
-          Description
-          <textarea
-            name="description"
-            required
-            value={product.description}
-            onChange={handleProduct}
-          />
-        </label>
-        <label>
-          Image Front
-          <input
-            type="url"
-            name="img_front"
-            required
-            value={product.img_front}
-            onChange={handleProduct}
-          />
-        </label>
-        <label>
-          Image Back
-          <input
-            type="url"
-            name="img_back"
-            required
-            value={product.img_back}
-            onChange={handleProduct}
-          />
-        </label>
-        <label>
-          Image Zoom
-          <input
-            type="url"
-            name="img_zoom"
-            value={product.img_zoom}
-            onChange={handleProduct}
-          />
-        </label>
-        <label>
-          Type
-          <select
-            name="type_id"
-            onChange={handleProduct}
-            required
-            value={product.type_id}
-          >
-            <option value={null}>Select Type</option>
-            {types.map((type) => (
-              <option value={type.id} key={type.id}>
-                {type.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Season
-          <select
-            name="season_id"
-            onChange={handleProduct}
-            required
-            value={product.season_id}
-          >
-            <option value={null}>Select Season</option>
-            {seasons.map((season) => (
-              <option value={season.id} key={season.id}>
-                {season.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button type="submit">{isCreation ? "Ajouter" : "Modifier"}</button>
-      </form>
+      {!AddButton && (
+        <Link to="/products/add">
+          <button type="button">ADD</button>
+        </Link>
+      )}
+      {!hideForm && (
+        <form onSubmit={handleRequest}>
+          <label>
+            Name
+            <input
+              type="text"
+              name="name"
+              required
+              value={product.name}
+              onChange={handleProduct}
+            />
+          </label>
+          <label>
+            Price
+            <input
+              type="number"
+              name="price"
+              required
+              value={product.price}
+              onChange={handleProduct}
+            />
+          </label>
+          <label>
+            Description
+            <textarea
+              name="description"
+              required
+              value={product.description}
+              onChange={handleProduct}
+            />
+          </label>
+          <label>
+            Image Front
+            <input
+              type="url"
+              name="img_front"
+              required
+              value={product.img_front}
+              onChange={handleProduct}
+            />
+          </label>
+          <label>
+            Image Back
+            <input
+              type="url"
+              name="img_back"
+              required
+              value={product.img_back}
+              onChange={handleProduct}
+            />
+          </label>
+          <label>
+            Image Zoom
+            <input
+              type="url"
+              name="img_zoom"
+              value={product.img_zoom}
+              onChange={handleProduct}
+            />
+          </label>
+          <label>
+            Type
+            <select
+              name="type_id"
+              onChange={handleProduct}
+              required
+              value={product.type_id}
+            >
+              <option value={null}>Select Type</option>
+              {types.map((type) => (
+                <option value={type.id} key={type.id}>
+                  {type.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Season
+            <select
+              name="season_id"
+              onChange={handleProduct}
+              required
+              value={product.season_id}
+            >
+              <option value={null}>Select Season</option>
+              {seasons.map((season) => (
+                <option value={season.id} key={season.id}>
+                  {season.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button type="submit">{isCreation ? "Ajouter" : "Modifier"}</button>
+        </form>
+      )}
       {!hideAllProducts && (
         <section>
           <h2>All Products</h2>
@@ -280,13 +290,17 @@ ProductForm.propTypes = {
     season_id: PropTypes.number,
   }),
   hideAllProducts: PropTypes.bool,
+  hideForm: PropTypes.bool,
   isCreation: PropTypes.bool,
+  AddButton: PropTypes.bool,
 };
 
 ProductForm.defaultProps = {
   preFilledProduct: null,
   hideAllProducts: false,
+  hideForm: true,
   isCreation: false,
+  AddButton: false,
 };
 
 export default ProductForm;

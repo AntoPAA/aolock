@@ -41,8 +41,6 @@ router.get("/seasons", seasonControllers.browse);
 
 router.get("/types", typeControllers.browse);
 
-router.get("/sizes", sizeControllers.browse);
-
 router.post("/products", validateProduct, productControllers.add);
 
 router.put("/products/:id", validateProduct, productControllers.edit);
@@ -56,10 +54,10 @@ router.post("/register", validateUser, userControllers.add);
 
 router.put("/customers/:id/name", checkCredentials, userControllers.updateName);
 
-router.get("/products/:id/size", sizeControllers.browseSize);
-router.get("/size/:id", sizeControllers.browseAllSize);
+router.get("/products/:id/size", sizeControllers.browseAllSize);
+router.get("/sizes", sizeControllers.browseSize);
 router.put("/size/:id", sizeControllers.UpdateSize);
-router.post("/products/:id/size", sizeControllers.AddSize);
+router.post("/products/size", sizeControllers.AddSize);
 router.delete("/size/:id", sizeControllers.destroy);
 
 /* ************************************************************************* */

@@ -70,21 +70,11 @@ const seed = async () => {
     }
 
     await Promise.all(seasonQuery);
-
     /* eslint-disable prefer-destructuring */
-
-    const slugify = (str) => {
-      return str
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, "")
-        .replace(/\s+/g, "-")
-        .substring(0, 255); // Limitez la longueur du slug à 255 caractères
-    };
-
     const productQuery = [];
     for (let i = 0; i < product.length; i += 1) {
       const name = product[i].name;
-      const slug = slugify(name);
+      const slug = name.split(" ").join("-").toLowerCase();
       productQuery.push(
         database.query(
           "insert into product(id, name, slug, price, description, img_front, img_back, img_zoom, type_id , season_id) values (?, ?, ?, ?, ?, ?, ?, ? , ? ,?)",
