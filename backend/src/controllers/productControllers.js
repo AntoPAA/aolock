@@ -19,7 +19,6 @@ const browse = async (req, res, next) => {
 const read = async (req, res, next) => {
   try {
     const product = await tables.product.read(req.params.slug);
-
     if (product == null) {
       res.sendStatus(404);
     } else {

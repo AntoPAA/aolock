@@ -14,6 +14,8 @@ import FormLogin from "./pages/FormLogin";
 import FormRegister from "./pages/FormRegister";
 import OneProduct from "./pages/OneProduct";
 import AccountUser from "./pages/AccountUser";
+import EditProductForm from "./pages/EditProductForm";
+import ProductForm from "./components/FormProduct";
 
 const router = createBrowserRouter([
   {
@@ -32,9 +34,8 @@ const router = createBrowserRouter([
         path: "/products/:slug",
         element: <OneProduct />,
         loader: async ({ params }) => {
-          return connexion
-            .get(`/products/${params.slug}`)
-            .then((res) => res.data);
+          const response = await connexion.get(`/products/${params.slug}`);
+          return response.data;
         },
       },
       {
@@ -72,6 +73,18 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: <AccountUser />,
+      },
+      {
+        path: "/products/edit/:slug",
+        element: <EditProductForm />,
+        loader: async ({ params }) => {
+          const response = await connexion.get(`/products/${params.slug}`);
+          return response.data;
+        },
+      },
+      {
+        path: "/products/add",
+        element: <ProductForm hideAllProducts isCreation />,
       },
     ],
   },

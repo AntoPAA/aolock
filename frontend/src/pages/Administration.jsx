@@ -15,7 +15,7 @@ function Administration() {
   }, [connected]);
   return (
     <div>
-      Administration <ProductForm />
+      <ProductForm />
       <SizeForm />
     </div>
   );

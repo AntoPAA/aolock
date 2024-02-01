@@ -196,7 +196,7 @@ function sizeForm() {
             </select>
           </label>
           <button type="submit">
-            {formMode === "put" ? "Modifier" : "Ajouter"}
+            {formMode === "put" ? "Ajouter" : "Modifier"}
           </button>
         </form>
       </Modal>

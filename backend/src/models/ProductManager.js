@@ -11,8 +11,9 @@ class ProductManager extends AbstractManager {
 
   async create(product) {
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (name, price, description, img_front, img_back, img_zoom, type_id, season_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO ${this.table} (name, slug, price, description, img_front, img_back, img_zoom, type_id, season_id) VALUES (?, REPLACE(LOWER(?), ' ', '-'), ?, ?, ?, ?, ?, ?, ?)`,
       [
+        product.name,
         product.name,
         product.price,
         product.description,
@@ -26,7 +27,6 @@ class ProductManager extends AbstractManager {
 
     return result.insertId;
   }
-
   // The Rs of CRUD - Read operations
 
   async read(slug) {
@@ -52,7 +52,7 @@ class ProductManager extends AbstractManager {
       [slug]
     );
 
-    return rows;
+    return rows[0];
   }
 
   async readAll() {

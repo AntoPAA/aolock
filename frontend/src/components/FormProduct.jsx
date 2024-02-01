@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { toast, ToastContainer } from "react-toastify";
 import connexion from "../services/connexion";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,12 +17,12 @@ const productType = {
   season_id: null,
 };
 
-function ProductForm() {
-  const [product, setProduct] = useState(productType);
+function ProductForm({ preFilledProduct, hideAllProducts, isCreation }) {
+  const navigate = useNavigate();
+  const [product, setProduct] = useState(preFilledProduct || productType);
   const [products, setProducts] = useState([]);
   const [types, setTypes] = useState([]);
   const [seasons, setSeasons] = useState([]);
-  const [formMode, setFormMode] = useState("add");
 
   const getTypes = async () => {
     try {
@@ -30,6 +32,10 @@ function ProductForm() {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    setProduct(preFilledProduct || productType);
+  }, [preFilledProduct]);
 
   const getSeasons = async () => {
     try {
@@ -58,7 +64,7 @@ function ProductForm() {
   }, []);
 
   const handleProduct = (event) => {
-    if (event.target.name) {
+    if (event.target.name === "type_id") {
       setProduct((previousState) => ({
         ...previousState,
         [event.target.name]: +event.target.value,
@@ -107,24 +113,22 @@ function ProductForm() {
   };
 
   const loadProduct = async (prod) => {
-    setProduct(prod);
-    setFormMode("put");
+    navigate(`/products/edit/${prod.slug}`);
   };
 
   const handleRequest = (event) => {
-    if (product.id) {
-      putProduct(event);
-    } else {
+    if (isCreation) {
       postProduct(event);
+    } else {
+      putProduct(event);
     }
   };
 
   return (
     <div>
-      <h1>Product Form</h1>
-      <button type="button" onClick={() => setProduct(productType)}>
-        ADD
-      </button>
+      <Link to="/products/add">
+        <button type="button">ADD</button>
+      </Link>
       <form onSubmit={handleRequest}>
         <label>
           Name
@@ -216,48 +220,73 @@ function ProductForm() {
             ))}
           </select>
         </label>
-        <button type="submit">
-          {formMode === "put" ? "Modifier" : "Ajouter"}
-        </button>
+        <button type="submit">{isCreation ? "Ajouter" : "Modifier"}</button>
       </form>
-      <section>
-        <h2>All Products</h2>
-        <table>
-          <thead>
-            <tr>
-              <td>id</td>
-              <td>name</td>
-              <td>price</td>
-              <td>Image</td>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((prod) => (
-              <tr key={prod.id}>
-                <td>{prod.id}</td>
-                <td>{prod.name}</td>
-                <td>{prod.price}</td>
-                <td>
-                  <img src={prod.img_front} alt={`Product: ${prod.name}`} />
-                </td>
-                <td>
-                  <button type="button" onClick={() => loadProduct(prod)}>
-                    PUT
-                  </button>
-                </td>
-                <td>
-                  <button type="button" onClick={() => deleteProduct(prod.id)}>
-                    del
-                  </button>
-                </td>
+      {!hideAllProducts && (
+        <section>
+          <h2>All Products</h2>
+          <table>
+            <thead>
+              <tr>
+                <td>id</td>
+                <td>name</td>
+                <td>price</td>
+                <td>Image</td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
+            </thead>
+            <tbody>
+              {products.map((prod) => (
+                <tr key={prod.id}>
+                  <td>{prod.id}</td>
+                  <td>{prod.name}</td>
+                  <td>{prod.price}</td>
+                  <td>
+                    <img src={prod.img_front} alt={`Product: ${prod.name}`} />
+                  </td>
+                  <td>
+                    <button type="button" onClick={() => loadProduct(prod)}>
+                      Modifier
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => deleteProduct(prod.id)}
+                    >
+                      del
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
       <ToastContainer theme="dark" />
     </div>
   );
 }
+
+ProductForm.propTypes = {
+  preFilledProduct: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    description: PropTypes.string,
+    img_front: PropTypes.string,
+    img_back: PropTypes.string,
+    img_zoom: PropTypes.string,
+    type_id: PropTypes.number,
+    season_id: PropTypes.number,
+  }),
+  hideAllProducts: PropTypes.bool,
+  isCreation: PropTypes.bool,
+};
+
+ProductForm.defaultProps = {
+  preFilledProduct: null,
+  hideAllProducts: false,
+  isCreation: false,
+};
 
 export default ProductForm;
