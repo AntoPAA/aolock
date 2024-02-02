@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import connexion from "../services/connexion";
 import { AuthContext } from "../context/auth";
+import "./FormLogin.css";
 
 const user = {
   email: "",
@@ -40,9 +41,10 @@ function FormLogin() {
     <div>
       <main className="log-container">
         <div className="form-container">
+          <h1 className="title-login">CONNEXION</h1>
           <form onSubmit={handleRequest} className="form-connection">
+            {/* eslint-disable */}
             <label>
-              Email:
               <input
                 className="label-form"
                 type="email"
@@ -50,11 +52,10 @@ function FormLogin() {
                 required
                 onChange={handleCredentials}
                 value={credentials.email}
-                placeholder="Email"
+                placeholder="E-mail"
               />
             </label>
             <label>
-              Password:
               <input
                 className="label-form"
                 type="password"
@@ -62,23 +63,23 @@ function FormLogin() {
                 required
                 onChange={handleCredentials}
                 value={credentials.password}
-                placeholder="Password"
+                placeholder="Mot De Passe"
               />
             </label>
-
-            <Link to="/register">Crée un compte</Link>
-
+            {/* eslint-enable */}
             {errorMessage && (
               <p className="validate-password" style={{ color: "red" }}>
                 {errorMessage}
               </p>
             )}
-
             <div className="button-container">
               <button type="submit" className="connection-button">
                 Se connecter
               </button>
-            </div>
+            </div>{" "}
+            <Link to="/register" className="create-link">
+              Crée un compte
+            </Link>
           </form>
         </div>
       </main>

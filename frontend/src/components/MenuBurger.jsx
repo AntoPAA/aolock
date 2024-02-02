@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
 import "./MenuBurger.css";
+import AOLOCKlogo from "../public/AOLOCKlogo.png";
 
 function MenuBurger() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -63,6 +64,9 @@ function MenuBurger() {
             <Link to="/login" className="menu-items" onClick={closeMenu}>
               Login
             </Link>
+            <div className="logo-mini">
+              <img src={AOLOCKlogo} alt="Account" className="logo-mini" />
+            </div>
           </>
         ) : (
           <>
@@ -89,6 +93,9 @@ function MenuBurger() {
             >
               Type2
             </Link>
+            <div className="logo-mini">
+              <img src={AOLOCKlogo} alt="Account" className="logo-mini" />
+            </div>
           </>
         )}
       </Menu>

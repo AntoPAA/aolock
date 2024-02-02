@@ -1,0 +1,22 @@
+.textError {
+  display: flex;
+  justify-content: center;
+  margin-top: 75px;
+}
+
+.imgError {
+  position: relative;
+  top: 35%;
+  left: 11%;
+  transform: translate(-50%, -50%);
+  margin-top: 250px;
+  margin-bottom: 290px;
+  width: auto;
+  height: 500px;
+}
+
+@media screen and (max-width: 600px) {
+  .textError {
+    margin-top: 150px;
+  }
+}

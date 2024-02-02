@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/auth";
 import connexion from "../services/connexion";
+import "./AccountUser.css";
 
 function CandidatAccount() {
-  const { connected, setConnected } = useAuthContext();
+  const { connected, setConnected, logout } = useAuthContext();
   const navigate = useNavigate();
 
   const [nameForm, setNameForm] = useState({
@@ -49,29 +50,39 @@ function CandidatAccount() {
   };
 
   return (
-    <div>
-      <h1>CandidatAccount</h1>
+    <div className="form-register">
+      <h1>MON COMPTE</h1>
+      <button type="button" className="button-connected" onClick={logout}>
+        Se déconnecter
+      </button>
+      <h1>DETAIL DU COMPTE</h1>
 
-      <form onSubmit={handleNameSubmit}>
+      <form onSubmit={handleNameSubmit} className="form-input">
+        {/* eslint-disable */}
         <label>
-          Last Name:
           <input
             type="text"
             name="lastname"
+            className="label-form"
+            placeholder="Nom de famille"
             value={nameForm.lastname}
             onChange={handleNameChange}
           />
         </label>
         <label>
-          First Name:
           <input
             type="text"
             name="firstname"
+            className="label-form"
+            placeholder="Prénom"
             value={nameForm.firstname}
             onChange={handleNameChange}
           />
         </label>
-        <button type="submit">Update Name</button>
+        {/* eslint-enable */}
+        <button type="submit" className="button-connected">
+          Update Name
+        </button>
       </form>
     </div>
   );

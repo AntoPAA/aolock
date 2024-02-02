@@ -1,21 +1,95 @@
 .navbar {
-  position: static;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #ffffff;
   padding: 10px;
   z-index: 100;
+  border-bottom: 1px solid #000;
 }
 
 .shop-button {
   border: 0;
   background-color: #ffffff;
   cursor: pointer;
+  margin-left: 100px;
+  font-size: 20px;
+  font-weight: bolder;
 }
 
-@media screen and (min-width: 1500px) {
+.link-page {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar-container {
+  display: flex;
+}
+
+.link-user {
+  margin-left: 100px;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.logo-main {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.link-account {
+  position: absolute;
+  left: 95%;
+  transform: translate(-50%);
+}
+
+.link-admin {
+  margin-left: 750px;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.button-connect {
+  position: absolute;
+  left: 90%;
+  transform: translate(-50% -50%);
+  top: 30%;
+}
+
+@media screen and (min-width: 821px) {
   .burgerVisible {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .link-user {
+    visibility: hidden;
+  }
+
+  .shop-button {
+    visibility: hidden;
+  }
+
+  .link-admin {
+    visibility: hidden;
+  }
+  .logo-main {
+    top: 35%;
+  }
+  .link-account {
+    position: absolute;
+    left: 90%;
+    transform: translate(-50% -50%);
+    top: 2.5%;
+  }
+  .user-container {
     display: none;
   }
 }

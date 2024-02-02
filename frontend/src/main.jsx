@@ -17,6 +17,7 @@ import AccountUser from "./pages/AccountUser";
 import EditProductForm from "./pages/EditProductForm";
 import ProductForm from "./components/FormProduct";
 import SizeForm from "./components/FormSize";
+import Error from "./components/Error";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
       {
         path: "/products/add",
         element: <SizeForm />,
+      },
+      {
+        path: "*",
+        element: <Error />,
       },
     ],
   },

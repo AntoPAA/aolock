@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Allproducts from "./AllProductCard";
+import "./ProductTypeFilter.css";
 
 function ProductTypeFilter() {
   const { products } = useLoaderData();
@@ -31,9 +32,12 @@ function ProductTypeFilter() {
 
   return (
     <div>
-      <div>
-        <div>trier par :</div>
-        <select value={order} onChange={(e) => changeOrder(e.target.value)}>
+      <div className="price-container">
+        <select
+          value={order}
+          onChange={(e) => changeOrder(e.target.value)}
+          className="select-price"
+        >
           <option value="croissant">Tri croissant</option>
           <option value="decroissant">Tri décroissant</option>
           <option value="pertinence">Pertinence</option>

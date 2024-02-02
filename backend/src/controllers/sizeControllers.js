@@ -124,6 +124,20 @@ const browseAllSize = async (req, res, next) => {
   }
 };
 
+const browseAllSizee = async (req, res, next) => {
+  try {
+    const product = await tables.size_by_product.reaad(req.params.id);
+
+    if (product == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(product);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 const destroy = async (req, res, next) => {
   try {
     // Fetch all articles from the database
@@ -149,5 +163,6 @@ module.exports = {
   AddSize,
   UpdateSize,
   browseAllSize,
+  browseAllSizee,
   destroy,
 };

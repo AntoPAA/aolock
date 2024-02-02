@@ -22,6 +22,17 @@ class SizeManager extends AbstractManager {
     return rows;
   }
 
+  async reaad(id) {
+    // Execute the SQL SELECT query to retrieve a specific Size by its ID
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where id = ?`,
+      [id]
+    );
+
+    // Return the first row of the result, which represents the Size
+    return rows;
+  }
+
   async readAll() {
     // Execute the SQL SELECT query to retrieve all Sizes from the "Size" table
     const [rows] = await this.database.query(`select * from ${this.table}`);
