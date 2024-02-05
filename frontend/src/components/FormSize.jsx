@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useParams } from "react-router-dom";
 import connexion from "../services/connexion";
 import "react-toastify/dist/ReactToastify.css";
+import "./FormSize.css";
 
 const sizeType = {
   quantity: 0,
@@ -11,7 +12,7 @@ const sizeType = {
   product_id: 0,
 };
 
-function sizeForm() {
+function sizeForm({ hideForm, hideadd, hideFormadd }) {
   const { slug } = useParams();
 
   const [size, setSize] = useState(sizeType);
@@ -156,98 +157,118 @@ function sizeForm() {
 
   return (
     <div>
-      <h1>size Form</h1>
-      <button type="button" onClick={() => openModal("add")}>
-        ADD
-      </button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-      >
-        <form onSubmit={handleRequest}>
-          <label>
-            Quantity
-            <input
-              type="number"
-              name="quantity"
-              required
-              value={size.quantity}
-              onChange={handlesize}
-            />
-          </label>
-          <label>
-            Size
-            <select
-              name="size_id"
-              onChange={handlesize}
-              required
-              value={size.size_id}
-            >
-              <option value={null}>Select Type</option>
-              {allsizes2 &&
-                allsizes2.map((allsize) => (
-                  <option value={allsize.id} key={allsize.id}>
-                    {allsize.label}
-                  </option>
-                ))}
-            </select>
-          </label>
-          <label>
-            Product
-            <select
-              name="product_id"
-              onChange={handlesize}
-              required
-              value={size.product_id}
-            >
-              <option value={null}>Select Type</option>
-              {products.map((product) => (
-                <option value={product.id} key={product.id}>
-                  {product.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button type="submit">
-            {formMode === "put" ? "Modifier" : "Ajouter"}
-          </button>
-        </form>
-      </Modal>
+      {!hideForm && (
+        <div>
+          {!hideadd && (
+            <div>
+              {!hideFormadd && <h1>size Form</h1>}
+              <button
+                type="button"
+                onClick={() => openModal("add")}
+                className="form-button"
+              >
+                AJOUTER
+              </button>
+            </div>
+          )}
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+          >
+            <form onSubmit={handleRequest}>
+              <label>
+                Quantity
+                <input
+                  type="number"
+                  name="quantity"
+                  className="handle-size"
+                  required
+                  value={size.quantity}
+                  onChange={handlesize}
+                />
+              </label>
+              <label>
+                Size
+                <select
+                  name="size_id"
+                  onChange={handlesize}
+                  className="handle-size"
+                  required
+                  value={size.size_id}
+                >
+                  <option value={null}>Select Type</option>
+                  {allsizes2 &&
+                    allsizes2.map((allsize) => (
+                      <option value={allsize.id} key={allsize.id}>
+                        {allsize.label}
+                      </option>
+                    ))}
+                </select>
+              </label>
+              <label>
+                Product
+                <select
+                  name="product_id"
+                  className="handle-size"
+                  onChange={handlesize}
+                  required
+                  value={size.product_id}
+                >
+                  <option value={null}>Select Type</option>
+                  {products.map((product) => (
+                    <option value={product.id} key={product.id}>
+                      {product.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <button type="submit" className="formsize-button">
+                {formMode === "put" ? "Modifier" : "Ajouter"}
+              </button>
+            </form>
+          </Modal>
+        </div>
+      )}
       <section>
-        <h2>All sizes</h2>
-        <table>
-          <thead>
-            <tr>
-              <td>quantity</td>
-              <td>id</td>
-              <td>label</td>
-            </tr>
-          </thead>
-          <tbody>
-            {sizes.stock &&
-              sizes.stock.map((sizeall) => (
-                <tr key={sizeall.id}>
-                  <td>{sizeall.quantity}</td>
-                  <td>{sizeall.id}</td>
-                  <td>{sizeall.label}</td>
-                  <td>
-                    <button type="button" onClick={() => loadsize(sizeall)}>
-                      PUT
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      onClick={() => deleteProduct(sizeall.id)}
-                    >
-                      del
-                    </button>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+        {!hideFormadd && (
+          <div>
+            <h2 className="productsize-title">Toute les tailles du produit</h2>
+            <table className="table-size">
+              <tbody>
+                {sizes.stock &&
+                  sizes.stock.map((sizeall) => (
+                    <tr key={sizeall.id}>
+                      <div className="quantity">
+                        <td className="quantity">
+                          Quantité : {sizeall.quantity}
+                        </td>
+                        <td className="quantity">Taille : {sizeall.label}</td>
+                      </div>
+                      <td>
+                        <button
+                          type="button"
+                          className="form-button"
+                          onClick={() => loadsize(sizeall)}
+                        >
+                          MODIFIER
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          className="form-button"
+                          onClick={() => deleteProduct(sizeall.id)}
+                        >
+                          SUPPRIMER
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </section>
       <ToastContainer theme="dark" />
     </div>

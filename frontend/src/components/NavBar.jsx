@@ -55,7 +55,7 @@ function NavBar() {
                 <img src={account} alt="Account" />
               </Link>
             ) : (
-              <Link className="button-connect" to="/login">
+              <Link className="link-account" to="/login">
                 <img src={account} alt="Account" />
               </Link>
             )}

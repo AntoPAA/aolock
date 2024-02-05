@@ -23,6 +23,8 @@
 .form-register {
   display: flex;
   flex-direction: column;
+  margin-top: 100px;
+  margin-bottom: 150px;
 }
 
 .form-input {

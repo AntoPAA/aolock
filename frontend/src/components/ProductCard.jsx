@@ -6,11 +6,10 @@ import "./ProductCard.css";
 function ProductCard({ product }) {
   return (
     <div className="card-container">
-      <Link to={`/products/${product.slug}`}>
-        <img className="card-img" src={product.img_front} alt="img-front" />
+      <img className="card-img" src={product.img_front} alt="img-front" />
+      <Link to={`/products/${product.slug}`} className="card-name">
+        <h2 className="card-name">{product.name}</h2>
       </Link>
-      <h2 className="card-name">{product.name}</h2>
-
       <h3 className="card-price">{product.price}€</h3>
     </div>
   );

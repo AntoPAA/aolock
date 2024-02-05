@@ -90,7 +90,7 @@
     margin-bottom: 20px;
   }
   .bm-menu-wrap {
-    top: 85px;
+    top: 78px;
     left: 0%;
   }
 
@@ -109,5 +109,49 @@
     transform: translate(-50%);
     height: 35px;
     width: auto;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .menu-items {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 28px;
+  }
+  .switch-links {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 28px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .bm-menu-wrap {
+    top: 40px;
+    left: 0%;
+  }
+
+  .link-page {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 28px;
+  }
+  .logo-mini {
+    position: absolute;
+    z-index: 100;
+    left: 55%;
+    top: 80%;
+    transform: translate(-50%);
+    height: 35px;
+    width: auto;
+  }
+
+  .burgerVisible {
+    left: 0%;
+    top: -90%;
   }
 }

@@ -45,6 +45,7 @@
   position: absolute;
   left: 95%;
   transform: translate(-50%);
+  top: 15%;
 }
 
 .link-admin {
@@ -87,7 +88,33 @@
     position: absolute;
     left: 90%;
     transform: translate(-50% -50%);
-    top: 2.5%;
+    top: 30%;
+  }
+  .user-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .link-user {
+    visibility: hidden;
+  }
+  .shop-button {
+    visibility: hidden;
+  }
+
+  .link-admin {
+    visibility: hidden;
+  }
+  .logo-main {
+    top: 30%;
+    left: 40%;
+  }
+  .link-account {
+    position: absolute;
+    left: 75%;
+    transform: translate(-50% -50%);
+    top: 15%;
   }
   .user-container {
     display: none;

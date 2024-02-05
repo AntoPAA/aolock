@@ -88,9 +88,7 @@ function ProductForm({
     try {
       await connexion.put(`/products/${product.id}`, product);
       getProducts();
-      toast.success("Produit modifié avec succès !");
     } catch (error) {
-      toast.error("Une erreur s'est produite.");
       console.error(error);
     }
   };
@@ -111,10 +109,8 @@ function ProductForm({
     try {
       await connexion.delete(`/products/${id}`);
       getProducts();
-      toast.success("Produit supprimé avec succès !");
     } catch (error) {
       console.error(error);
-      toast.error("Une erreur s'est produite.");
     }
   };
 
@@ -134,16 +130,20 @@ function ProductForm({
     <div>
       {!AddButton && (
         <Link to="/products/add">
-          <button type="button">ADD</button>
+          <button type="button" className="form-button">
+            AJOUTER
+          </button>
         </Link>
       )}
       {!hideForm && (
-        <form onSubmit={handleRequest}>
+        <form onSubmit={handleRequest} className="form-product">
+          <h1 className="title-product">FORMULAIRE D'AJOUT</h1>
           <label>
             Name
             <input
               type="text"
               name="name"
+              className="handle-product"
               required
               value={product.name}
               onChange={handleProduct}
@@ -154,6 +154,7 @@ function ProductForm({
             <input
               type="number"
               name="price"
+              className="handle-product"
               required
               value={product.price}
               onChange={handleProduct}
@@ -163,6 +164,7 @@ function ProductForm({
             Description
             <textarea
               name="description"
+              className="handle-product"
               required
               value={product.description}
               onChange={handleProduct}
@@ -173,6 +175,7 @@ function ProductForm({
             <input
               type="url"
               name="img_front"
+              className="handle-product"
               required
               value={product.img_front}
               onChange={handleProduct}
@@ -183,6 +186,7 @@ function ProductForm({
             <input
               type="url"
               name="img_back"
+              className="handle-product"
               required
               value={product.img_back}
               onChange={handleProduct}
@@ -193,6 +197,7 @@ function ProductForm({
             <input
               type="url"
               name="img_zoom"
+              className="handle-product"
               value={product.img_zoom}
               onChange={handleProduct}
             />
@@ -201,6 +206,7 @@ function ProductForm({
             Type
             <select
               name="type_id"
+              className="handle-product"
               onChange={handleProduct}
               required
               value={product.type_id}
@@ -217,6 +223,7 @@ function ProductForm({
             Season
             <select
               name="season_id"
+              className="handle-product"
               onChange={handleProduct}
               required
               value={product.season_id}
@@ -229,47 +236,43 @@ function ProductForm({
               ))}
             </select>
           </label>
-          <button type="submit">{isCreation ? "Ajouter" : "Modifier"}</button>
+          <button className="form-button" type="submit">
+            {isCreation ? "AJOUTER" : "MODIFIER"}
+          </button>
         </form>
       )}
       {!hideAllProducts && (
         <section>
-          <h2>All Products</h2>
-          <table>
-            <thead>
-              <tr>
-                <td>id</td>
-                <td>name</td>
-                <td>price</td>
-                <td>Image</td>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((prod) => (
-                <tr key={prod.id}>
-                  <td>{prod.id}</td>
-                  <td>{prod.name}</td>
-                  <td>{prod.price}</td>
+          <tbody className="body-card">
+            {products.map((prod) => (
+              <tr key={prod.id}>
+                <div className="formadmin-container">
                   <td>
                     <img src={prod.img_front} alt={`Product: ${prod.name}`} />
                   </td>
+                  <td className="product-name">{prod.name}</td>
                   <td>
-                    <button type="button" onClick={() => loadProduct(prod)}>
-                      Modifier
+                    <button
+                      className="form-button"
+                      type="button"
+                      onClick={() => loadProduct(prod)}
+                    >
+                      MODIFIER
                     </button>
                   </td>
                   <td>
                     <button
                       type="button"
+                      className="form-button-del"
                       onClick={() => deleteProduct(prod.id)}
                     >
-                      del
+                      SUPPRIMER
                     </button>
                   </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                </div>
+              </tr>
+            ))}
+          </tbody>
         </section>
       )}
       <ToastContainer theme="dark" />

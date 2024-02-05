@@ -7,7 +7,7 @@ function ProductTypePage() {
   const { typeLabel } = useLoaderData();
 
   return (
-    <div>
+    <div className="container-carde">
       <h1 className="title-type">{typeLabel}</h1>
       <h2 className="subtitle-type">DECOUVREZ TOUS NOS {typeLabel} UNISEXE.</h2>
       <div className="container-filter">

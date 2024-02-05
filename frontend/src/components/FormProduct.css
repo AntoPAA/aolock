@@ -3,3 +3,83 @@
   --toastify-color-success: #ffffff;
   --toastify-color-error: #ffffff;
 }
+
+.formadmin-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 16px;
+}
+
+.body-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-name {
+  margin-top: 15px;
+  font-size: 25px;
+}
+
+.form-button {
+  color: white;
+  font-weight: 300;
+  width: 250px;
+  height: 65px;
+  flex-shrink: 0;
+  border-radius: 1px;
+  background: #000000;
+  border: 0;
+  margin-top: 20px;
+}
+
+.form-button {
+  cursor: pointer;
+}
+
+.form-button:active {
+  transform: translateY(4px);
+}
+
+.form-button-del {
+  color: white;
+  font-weight: 300;
+  width: 200px;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 1px;
+  background: #000000;
+  border: 0;
+  margin-top: 20px;
+}
+
+.form-button-del {
+  cursor: pointer;
+}
+
+.form-button-del:active {
+  transform: translateY(4px);
+}
+
+.handle-product {
+  width: 450px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 1px;
+  border: 1px solid #000000;
+  background: #fff;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  margin-left: 705px;
+  margin-top: 15px;
+}
+
+.title-product {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}

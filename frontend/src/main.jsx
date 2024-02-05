@@ -15,9 +15,9 @@ import FormRegister from "./pages/FormRegister";
 import OneProduct from "./pages/OneProduct";
 import AccountUser from "./pages/AccountUser";
 import EditProductForm from "./pages/EditProductForm";
-import ProductForm from "./components/FormProduct";
-import SizeForm from "./components/FormSize";
 import Error from "./components/Error";
+import ProductAdd from "./pages/ProductAdd";
+import AboutUs from "./pages/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -87,15 +87,14 @@ const router = createBrowserRouter([
           return response.data && response2;
         },
       },
+
       {
         path: "/products/add",
-        element: (
-          <ProductForm hideAllProducts isCreation hideForm={false} AddButton />
-        ),
+        element: <ProductAdd />,
       },
       {
-        path: "/products/add",
-        element: <SizeForm />,
+        path: "aboutus",
+        element: <AboutUs />,
       },
       {
         path: "*",

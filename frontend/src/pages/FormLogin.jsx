@@ -76,7 +76,7 @@ function FormLogin() {
               <button type="submit" className="connection-button">
                 Se connecter
               </button>
-            </div>{" "}
+            </div>
             <Link to="/register" className="create-link">
               Crée un compte
             </Link>

@@ -23,7 +23,7 @@ function OneProduct() {
         <div className="one-detail">
           <h4 className="one-description">
             {product.description.split("|").map((paragraph) => (
-              <p key={product.id}>{paragraph.trim()}</p>
+              <p key={product.slug}>{paragraph.trim()}</p>
             ))}
           </h4>
         </div>

@@ -84,14 +84,21 @@ function MenuBurger() {
               to="/products/type/1"
               onClick={closeMenu}
             >
-              Type1
+              T-SHIRT
             </Link>
             <Link
               className="link-page"
               to="/products/type/2"
               onClick={closeMenu}
             >
-              Type2
+              SWEATSHIRT
+            </Link>
+            <Link
+              className="link-page"
+              to="/products/type/3"
+              onClick={closeMenu}
+            >
+              MASTERCLASS
             </Link>
             <div className="logo-mini">
               <img src={AOLOCKlogo} alt="Account" className="logo-mini" />

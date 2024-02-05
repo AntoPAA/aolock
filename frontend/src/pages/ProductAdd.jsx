@@ -4,13 +4,11 @@ import ProductForm from "../components/FormProduct";
 import connexion from "../services/connexion";
 import SizeForm from "../components/FormSize";
 import { useAuthContext } from "../context/auth";
-import "./EditProductForm.css";
+import "./ProductAdd.css";
 
-function EditProductForm() {
+function ProductAdd() {
   const { slug } = useParams();
-  const [product, setProduct] = useState({});
-  const [types] = useState([]);
-  const [seasons] = useState([]);
+  const [setProduct] = useState({});
 
   const { connected } = useAuthContext();
   const navigate = useNavigate();
@@ -37,18 +35,11 @@ function EditProductForm() {
       <Link to="/administration" className="link-return">
         <p className="link-return">🠔 Retour à l'administration</p>
       </Link>
-      <ProductForm
-        preFilledProduct={product}
-        types={types}
-        seasons={seasons}
-        formMode="put"
-        hideAllProducts
-        hideForm={false}
-        AddButton
-      />
-      <SizeForm hideadd />
+      <ProductForm hideAllProducts isCreation hideForm={false} AddButton />
+      <h1 className="add-size">AJOUTER UNE TAILLE</h1>
+      <SizeForm hideForm={false} hideFormadd />
     </div>
   );
 }
 
-export default EditProductForm;
+export default ProductAdd;

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/auth";
 import ProductForm from "../components/FormProduct";
 import SizeForm from "../components/FormSize";
+import "./Administration.css";
 
 function Administration() {
   const { connected } = useAuthContext();
@@ -14,9 +15,9 @@ function Administration() {
     }
   }, [connected]);
   return (
-    <div>
+    <div className="administration">
       <ProductForm />
-      <SizeForm />
+      <SizeForm hideForm hideFormadd />
     </div>
   );
 }

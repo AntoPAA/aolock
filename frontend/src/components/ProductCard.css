@@ -1,0 +1,11 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card-name {
+  text-decoration: none;
+  color: black;
+  margin-bottom: 15px;
+}
