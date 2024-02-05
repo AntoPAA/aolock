@@ -1,0 +1,50 @@
+.img-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  display: flex;
+  margin-top: 100px;
+}
+
+.content-img {
+  margin-left: 20px;
+}
+
+.one-detail {
+  width: 450px;
+  height: 300px;
+  border: 1px solid #a0a0a0;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  text-align: start;
+}
+
+.img-front {
+  width: 550px;
+  height: auto;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 25%;
+}
+
+.title-price {
+  display: flex;
+  justify-content: space-around;
+}
+
+.price-one {
+  margin-top: 26px;
+  font-size: 30px;
+}
+
+.one-description {
+  margin-left: 10px;
+}

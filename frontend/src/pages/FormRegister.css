@@ -1,0 +1,7 @@
+.form-alllabel {
+  display: flex;
+  flex-direction: column;
+}
+.button-container {
+  margin-bottom: 100px;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Modal from "react-modal";
+import { useNavigate, Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { toast, ToastContainer } from "react-toastify";
 import connexion from "../services/connexion";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,49 +13,22 @@ const productType = {
   img_front: "",
   img_back: "",
   img_zoom: "",
-  size_id: null,
   type_id: null,
   season_id: null,
 };
 
-function ProductForm() {
-  const [product, setProduct] = useState(productType);
+function ProductForm({
+  preFilledProduct,
+  hideAllProducts,
+  isCreation,
+  hideForm,
+  AddButton,
+}) {
+  const navigate = useNavigate();
+  const [product, setProduct] = useState(preFilledProduct || productType);
   const [products, setProducts] = useState([]);
-  const [sizes, setSizes] = useState([]);
   const [types, setTypes] = useState([]);
   const [seasons, setSeasons] = useState([]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [formMode, setFormMode] = useState("add");
-
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-    },
-  };
-
-  const openModal = (mode) => {
-    setFormMode(mode);
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setProduct(productType);
-  };
-
-  const getSizes = async () => {
-    try {
-      const mySizes = await connexion.get("/sizes").then((res) => res.data);
-      setSizes(mySizes);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const getTypes = async () => {
     try {
@@ -64,6 +38,10 @@ function ProductForm() {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    setProduct(preFilledProduct || productType);
+  }, [preFilledProduct]);
 
   const getSeasons = async () => {
     try {
@@ -86,14 +64,13 @@ function ProductForm() {
   };
 
   useEffect(() => {
-    getSizes();
     getTypes();
     getSeasons();
     getProducts();
   }, []);
 
   const handleProduct = (event) => {
-    if (event.target.name === "size_id") {
+    if (event.target.name === "type_id") {
       setProduct((previousState) => ({
         ...previousState,
         [event.target.name]: +event.target.value,
@@ -111,9 +88,7 @@ function ProductForm() {
     try {
       await connexion.put(`/products/${product.id}`, product);
       getProducts();
-      toast.success("Produit modifié avec succès !");
     } catch (error) {
-      toast.error("Une erreur s'est produite.");
       console.error(error);
     }
   };
@@ -134,46 +109,41 @@ function ProductForm() {
     try {
       await connexion.delete(`/products/${id}`);
       getProducts();
-      toast.success("Produit supprimé avec succès !");
     } catch (error) {
       console.error(error);
-      toast.error("Une erreur s'est produite.");
     }
   };
 
   const loadProduct = async (prod) => {
-    setProduct(prod);
-    openModal("put");
+    navigate(`/products/edit/${prod.slug}`);
   };
 
   const handleRequest = (event) => {
-    if (product.id) {
-      putProduct(event);
-      closeModal();
-    } else {
+    if (isCreation) {
       postProduct(event);
-      closeModal();
+    } else {
+      putProduct(event);
     }
   };
 
   return (
     <div>
-      <h1>Product Form</h1>
-      <button type="button" onClick={() => openModal("add")}>
-        ADD
-      </button>
-
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-      >
-        <form onSubmit={handleRequest}>
+      {!AddButton && (
+        <Link to="/products/add">
+          <button type="button" className="form-button">
+            AJOUTER
+          </button>
+        </Link>
+      )}
+      {!hideForm && (
+        <form onSubmit={handleRequest} className="form-product">
+          <h1 className="title-product">FORMULAIRE D'AJOUT</h1>
           <label>
             Name
             <input
               type="text"
               name="name"
+              className="handle-product"
               required
               value={product.name}
               onChange={handleProduct}
@@ -184,6 +154,7 @@ function ProductForm() {
             <input
               type="number"
               name="price"
+              className="handle-product"
               required
               value={product.price}
               onChange={handleProduct}
@@ -193,6 +164,7 @@ function ProductForm() {
             Description
             <textarea
               name="description"
+              className="handle-product"
               required
               value={product.description}
               onChange={handleProduct}
@@ -203,6 +175,7 @@ function ProductForm() {
             <input
               type="url"
               name="img_front"
+              className="handle-product"
               required
               value={product.img_front}
               onChange={handleProduct}
@@ -213,6 +186,7 @@ function ProductForm() {
             <input
               type="url"
               name="img_back"
+              className="handle-product"
               required
               value={product.img_back}
               onChange={handleProduct}
@@ -223,30 +197,16 @@ function ProductForm() {
             <input
               type="url"
               name="img_zoom"
+              className="handle-product"
               value={product.img_zoom}
               onChange={handleProduct}
             />
           </label>
           <label>
-            Size
-            <select
-              name="size_id"
-              onChange={handleProduct}
-              required
-              value={product.size_id}
-            >
-              <option value={null}>Select Size</option>
-              {sizes.map((size) => (
-                <option value={size.id} key={size.id}>
-                  {size.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
             Type
             <select
               name="type_id"
+              className="handle-product"
               onChange={handleProduct}
               required
               value={product.type_id}
@@ -263,6 +223,7 @@ function ProductForm() {
             Season
             <select
               name="season_id"
+              className="handle-product"
               onChange={handleProduct}
               required
               value={product.season_id}
@@ -275,49 +236,74 @@ function ProductForm() {
               ))}
             </select>
           </label>
-          <button type="submit">
-            {formMode === "put" ? "Modifier" : "Ajouter"}
+          <button className="form-button" type="submit">
+            {isCreation ? "AJOUTER" : "MODIFIER"}
           </button>
         </form>
-      </Modal>
-      <section>
-        <h2>All Products</h2>
-        <table>
-          <thead>
-            <tr>
-              <td>id</td>
-              <td>name</td>
-              <td>price</td>
-              <td>Image</td>
-            </tr>
-          </thead>
-          <tbody>
+      )}
+      {!hideAllProducts && (
+        <section>
+          <tbody className="body-card">
             {products.map((prod) => (
               <tr key={prod.id}>
-                <td>{prod.id}</td>
-                <td>{prod.name}</td>
-                <td>{prod.price}</td>
-                <td>
-                  <img src={prod.img_front} alt={`Product: ${prod.name}`} />
-                </td>
-                <td>
-                  <button type="button" onClick={() => loadProduct(prod)}>
-                    PUT
-                  </button>
-                </td>
-                <td>
-                  <button type="button" onClick={() => deleteProduct(prod.id)}>
-                    del
-                  </button>
-                </td>
+                <div className="formadmin-container">
+                  <td>
+                    <img src={prod.img_front} alt={`Product: ${prod.name}`} />
+                  </td>
+                  <td className="product-name">{prod.name}</td>
+                  <td>
+                    <button
+                      className="form-button"
+                      type="button"
+                      onClick={() => loadProduct(prod)}
+                    >
+                      MODIFIER
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      className="form-button-del"
+                      onClick={() => deleteProduct(prod.id)}
+                    >
+                      SUPPRIMER
+                    </button>
+                  </td>
+                </div>
               </tr>
             ))}
           </tbody>
-        </table>
-      </section>
+        </section>
+      )}
       <ToastContainer theme="dark" />
     </div>
   );
 }
+
+ProductForm.propTypes = {
+  preFilledProduct: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    description: PropTypes.string,
+    img_front: PropTypes.string,
+    img_back: PropTypes.string,
+    img_zoom: PropTypes.string,
+    type_id: PropTypes.number,
+    season_id: PropTypes.number,
+  }),
+  hideAllProducts: PropTypes.bool,
+  hideForm: PropTypes.bool,
+  isCreation: PropTypes.bool,
+  AddButton: PropTypes.bool,
+};
+
+ProductForm.defaultProps = {
+  preFilledProduct: null,
+  hideAllProducts: false,
+  hideForm: true,
+  isCreation: false,
+  AddButton: false,
+};
 
 export default ProductForm;

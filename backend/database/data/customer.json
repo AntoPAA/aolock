@@ -1,0 +1,23 @@
+[
+  {
+    "lastname": "Doe",
+    "firstname": "John",
+    "email": "john.doe@email.com",
+    "password": "password123",
+    "role_id": 1
+  },
+  {
+    "lastname": "Smith",
+    "firstname": "Alice",
+    "email": "alice.smith@email.com",
+    "password": "securepwd456",
+    "role_id": 2
+  },
+  {
+    "lastname": "Admin",
+    "firstname": "Super",
+    "email": "super.admin@email.com",
+    "password": "adminpass789",
+    "role_id": 2
+  }
+]

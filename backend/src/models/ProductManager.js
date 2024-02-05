@@ -10,50 +10,46 @@ class ProductManager extends AbstractManager {
   // The C of CRUD - Create operation
 
   async create(product) {
-    // Execute the SQL INSERT query to add a new product to the "product" table
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (name, price, description, img_front, img_back, img_zoom, size_id, type_id, season_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO ${this.table} (name, slug, price, description, img_front, img_back, img_zoom, type_id, season_id) VALUES (?, REPLACE(LOWER(?), ' ', '-'), ?, ?, ?, ?, ?, ?, ?)`,
       [
+        product.name,
         product.name,
         product.price,
         product.description,
         product.img_front,
         product.img_back,
         product.img_zoom,
-        product.size_id,
         product.type_id,
         product.season_id,
       ]
     );
 
-    // Return the ID of the newly inserted product
     return result.insertId;
   }
-
   // The Rs of CRUD - Read operations
 
-  async read(id) {
+  async read(slug) {
     const [rows] = await this.database.query(
-      `
-      SELECT
-        product.id,
-        product.name,
-        product.price,
-        product.description,
-        product.img_front,
-        product.img_back,
-        product.img_zoom,
-        product.created_at,
-        size.label AS size_label,
-        type.label AS type_label,
-        season.label AS season_label
-      FROM ${this.table}
-      INNER JOIN size ON size.id = ${this.table}.size_id
-      INNER JOIN type ON type.id = ${this.table}.type_id
-      INNER JOIN season ON season.id = ${this.table}.season_id
-      WHERE ${this.table}.id = ?
-    `,
-      [id]
+      `SELECT
+      product.id,
+      product.name,
+      product.price,
+      product.description,
+      product.img_front,
+      product.img_back,
+      product.img_zoom,
+      product.created_at,
+      type.id as type_id,
+      season.id as season_id,
+      JSON_ARRAYAGG(JSON_OBJECT('id', size.id, 'label', size.label, 'quantity', size_by_product.quantity)) as stock
+  FROM ${this.table}
+  INNER JOIN type ON type.id = ${this.table}.type_id
+  INNER JOIN season ON season.id = ${this.table}.season_id
+  INNER JOIN size_by_product ON size_by_product.product_id = ${this.table}.id
+  INNER JOIN size ON size.id = size_by_product.size_id
+  WHERE ${this.table}.slug = ?`,
+      [slug]
     );
 
     return rows[0];
@@ -105,9 +101,8 @@ class ProductManager extends AbstractManager {
   }
 
   async update(id, product) {
-    // Execute the SQL INSERT query to add a new product to the "product" table
     const [result] = await this.database.query(
-      `UPDATE ${this.table} SET name = ?, price = ?, description = ?, img_front = ?, img_back = ?, img_zoom = ?, size_id = ?, type_id = ?, season_id = ? WHERE id = ? `,
+      `UPDATE ${this.table} SET name = ?, price = ?, description = ?, img_front = ?, img_back = ?, img_zoom = ?, type_id = ?, season_id = ? WHERE id = ? `,
       [
         product.name,
         product.price,
@@ -115,14 +110,12 @@ class ProductManager extends AbstractManager {
         product.img_front,
         product.img_back,
         product.img_zoom,
-        product.size_id,
         product.type_id,
         product.season_id,
         id,
       ]
     );
 
-    // Return the ID of the newly inserted product
     return result;
   }
 

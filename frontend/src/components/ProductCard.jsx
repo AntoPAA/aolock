@@ -7,10 +7,10 @@ function ProductCard({ product }) {
   return (
     <div className="card-container">
       <img className="card-img" src={product.img_front} alt="img-front" />
-      <Link to={`/products/${product.id}`}>
+      <Link to={`/products/${product.slug}`} className="card-name">
         <h2 className="card-name">{product.name}</h2>
       </Link>
-      <h3 className="card-price">{product.price}</h3>
+      <h3 className="card-price">{product.price}€</h3>
     </div>
   );
 }
@@ -19,6 +19,7 @@ ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
     img_front: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,

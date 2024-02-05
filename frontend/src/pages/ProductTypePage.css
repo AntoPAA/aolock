@@ -1,0 +1,25 @@
+.container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-container {
+  margin: 80px;
+}
+
+.title-type {
+  display: flex;
+  margin-top: 75px;
+  margin-left: 25px;
+  font-size: 27px;
+  margin-bottom: 0px;
+}
+
+.subtitle-type {
+  display: flex;
+  margin-left: 25px;
+  font-size: 20px;
+  color: rgb(41, 41, 41);
+  margin-top: 0px;
+}

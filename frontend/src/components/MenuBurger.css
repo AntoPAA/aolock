@@ -1,0 +1,157 @@
+@media screen and (max-width: 599px) {
+  .burgerVisible {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    margin-top: 16px;
+    margin-right: 16px;
+  }
+}
+
+.bm-item {
+  display: inline-block;
+  font-size: 23px;
+  text-decoration: none;
+  margin-bottom: 50px;
+  color: rgb(0, 0, 0);
+  transition: color 0.2s;
+}
+
+.bm-burger-button {
+  display: block;
+  position: relative;
+  margin: 16px;
+  width: 33px;
+  height: 28px;
+  z-index: 100;
+  user-select: none;
+  cursor: pointer;
+}
+.bm-burger-bars {
+  background: #000000;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.bm-menu {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  background: rgb(255, 255, 255);
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+.bm-menu-wrap {
+  top: 110px;
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 100;
+  background-color: #ffffff;
+}
+.bm-overlay {
+  display: none;
+}
+
+@media screen and (min-width: 820px) {
+  .bm-menu-wrap {
+    top: 85px;
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .menu-items {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 28px;
+  }
+  .switch-links {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 28px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .bm-menu-wrap {
+    top: 78px;
+    left: 0%;
+  }
+
+  .link-page {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 28px;
+  }
+  .logo-mini {
+    position: absolute;
+    z-index: 100;
+    left: 55%;
+    top: 80%;
+    transform: translate(-50%);
+    height: 35px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .menu-items {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 28px;
+  }
+  .switch-links {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 28px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .bm-menu-wrap {
+    top: 40px;
+    left: 0%;
+  }
+
+  .link-page {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+    font-size: 28px;
+  }
+  .logo-mini {
+    position: absolute;
+    z-index: 100;
+    left: 55%;
+    top: 80%;
+    transform: translate(-50%);
+    height: 35px;
+    width: auto;
+  }
+
+  .burgerVisible {
+    left: 0%;
+    top: -90%;
+  }
+}

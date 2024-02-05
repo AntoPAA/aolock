@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import connexion from "../services/connexion";
+import "./FormRegister.css";
 
 const user = {
   email: "",
@@ -57,10 +58,11 @@ function FormRegister() {
     <div>
       <main className="log-container">
         <div className="form-container">
+          <h1 className="title-login">CREER UN COMPTE</h1>
           <form onSubmit={handleRequest} className="form-connection">
             <div className="form-alllabel">
+              {/* eslint-disable */}
               <label>
-                Email:
                 <input
                   className="label-form"
                   type="email"
@@ -68,11 +70,10 @@ function FormRegister() {
                   required
                   onChange={handleCredentials}
                   value={credentials.email}
-                  placeholder="Email"
+                  placeholder="E-mail"
                 />
               </label>
               <label>
-                Password:
                 <input
                   className="label-form"
                   type="password"
@@ -80,11 +81,10 @@ function FormRegister() {
                   required
                   onChange={handleCredentials}
                   value={credentials.password}
-                  placeholder="Password"
+                  placeholder="Mot De Passe"
                 />
               </label>
               <label>
-                Confirm Password:
                 <input
                   className="label-form"
                   type="password"
@@ -92,10 +92,11 @@ function FormRegister() {
                   required
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   value={confirmPassword}
-                  placeholder="Confirm Password"
+                  placeholder="Confirmer Mot de passe"
                 />
               </label>
             </div>
+            {/* eslint-enable */}
             {errorMessage && (
               <p className="validate-password" style={{ color: "red" }}>
                 {errorMessage}

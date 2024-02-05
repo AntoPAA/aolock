@@ -18,18 +18,13 @@ const browse = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
-    // Fetch a specific product from the database based on the provided ID
-    const product = await tables.product.read(req.params.id);
-
-    // If the product is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the product in JSON format
+    const product = await tables.product.read(req.params.slug);
     if (product == null) {
       res.sendStatus(404);
     } else {
       res.json(product);
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
@@ -39,17 +34,13 @@ const read = async (req, res, next) => {
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
-  // Extract the product data from the request body
   const product = req.body;
 
   try {
-    // Insert the product into the database
     const insertId = await tables.product.create(product);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted product
     res.status(201).json({ insertId });
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };

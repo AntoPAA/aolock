@@ -9,6 +9,7 @@ const SeasonManager = require("./models/SeasonManager");
 const TypeManager = require("./models/TypeManager");
 const SizeManager = require("./models/SizeManager");
 const UserManager = require("./models/UserManager");
+const SizeProductManager = require("./models/SizeProductManager");
 
 const managers = [
   ItemManager,
@@ -17,6 +18,7 @@ const managers = [
   TypeManager,
   SizeManager,
   UserManager,
+  SizeProductManager,
   // Add other managers here
 ];
 

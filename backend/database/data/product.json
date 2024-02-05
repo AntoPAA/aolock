@@ -1,0 +1,156 @@
+[
+  {
+    "id": 1,
+    "name": "Product 1",
+    "price": 19.99,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://images.asos-media.com/products/new-look-t-shirt-a-imprime-kyoto-city-noir/205593310-2?$n_320w$&wid=317&fit=constrain",
+    "img_back": "https://images.asos-media.com/products/new-look-t-shirt-a-imprime-kyoto-city-noir/205593310-4?$n_320w$&wid=317&fit=constrain",
+    "img_zoom": "https://images.asos-media.com/products/new-look-t-shirt-a-imprime-kyoto-city-noir/205593310-3?$n_320w$&wid=317&fit=constrain",
+    "type_id": 1,
+    "season_id": 1
+  },
+  {
+    "id": 2,
+    "name": "champion t shirt",
+    "price": 29.99,
+    "description": "100% cotonCoupe normale et unisex Couleur noirImpression numériqueA laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://images.asos-media.com/products/champion-t-shirt-imprime-dans-le-dos-avec-logo-superpose-noir/205405170-1-black?$n_320w$&wid=317&fit=constrain",
+    "img_back": "https://example.com/back2.jpg",
+    "img_zoom": "https://example.com/zoom2.jpg",
+    "type_id": 2,
+    "season_id": 2
+  },
+  {
+    "id": 3,
+    "name": "New Look",
+    "price": 39.99,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://images.asos-media.com/products/new-look-t-shirt-a-imprime-graphique-new-york-blanc/205800400-1-white?$n_320w$&wid=317&fit=constrain",
+    "img_back": "https://example.com/back3.jpg",
+    "img_zoom": "https://example.com/zoom3.jpg",
+    "type_id": 1,
+    "season_id": 2
+  },
+  {
+    "id": 4,
+    "name": "Columbia Talbert",
+    "price": 49.99,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://images.asos-media.com/products/exclusivite-asos-columbia-talbert-ridge-t-shirt-imprime-au-dos-gris/204729216-1-grey?$n_320w$&wid=317&fit=constrain",
+    "img_back": "https://example.com/back4.jpg",
+    "img_zoom": "https://example.com/zoom4.jpg",
+    "type_id": 2,
+    "season_id": 1
+  },
+  {
+    "id": 5,
+    "name": "Columbia cavalry",
+    "price": 59.99,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://images.asos-media.com/products/columbia-cavalry-trail-t-shirt-imprime-au-dos-noir-exclusivite-asos/204729440-1-black?$n_320w$&wid=317&fit=constrain",
+    "img_back": "https://example.com/back5.jpg",
+    "img_zoom": "https://example.com/zoom5.jpg",
+    "type_id": 1,
+    "season_id": 2
+  },
+  {
+    "id": 6,
+    "name": "wip night",
+    "price": 69.99,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://images.asos-media.com/products/carhartt-wip-night-night-t-shirt-imprime-au-dos-noir/205923949-1-black?$n_320w$&wid=317&fit=constrain",
+    "img_back": "https://example.com/back6.jpg",
+    "img_zoom": "https://example.com/zoom6.jpg",
+    "type_id": 2,
+    "season_id": 1
+  },
+  {
+    "id": 7,
+    "name": "imprimé hollister",
+    "price": 79.99,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://images.asos-media.com/products/hollister-t-shirt-a-imprime-brode-dans-le-dos-noir/206064290-1-black?$n_320w$&wid=317&fit=constrain",
+    "img_back": "https://example.com/back7.jpg",
+    "img_zoom": "https://example.com/zoom7.jpg",
+    "type_id": 1,
+    "season_id": 2
+  },
+  {
+    "id": 8,
+    "name": "barbour catterick",
+    "price": 89.99,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://images.asos-media.com/products/barbour-catterick-t-shirt-imprime-au-dos-blanc-casse/205496843-1-mist?$n_320w$&wid=317&fit=constrain",
+    "img_back": "https://example.com/back8.jpg",
+    "img_zoom": "https://example.com/zoom8.jpg",
+    "type_id": 2,
+    "season_id": 1
+  },
+  {
+    "id": 9,
+    "name": "imprime champignon",
+    "price": 99.99,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://images.asos-media.com/products/pieces-t-shirt-avec-imprime-champignons-au-dos-noir/205818270-1-black?$n_320w$&wid=317&fit=constrain",
+    "img_back": "https://example.com/back9.jpg",
+    "img_zoom": "https://example.com/zoom9.jpg",
+    "type_id": 1,
+    "season_id": 2
+  },
+  {
+    "id": 10,
+    "name": "aquatique noir",
+    "price": 109.99,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://images.asos-media.com/products/collusion-unisex-t-shirt-avec-imprime-photo-aquatique-noir/205556846-1-black?$n_320w$&wid=317&fit=constrain",
+    "img_back": "https://example.com/back10.jpg",
+    "img_zoom": "https://example.com/zoom10.jpg",
+    "type_id": 2,
+    "season_id": 1
+  },
+  {
+    "id": 11,
+    "name": "Eslint",
+    "price": 0.5,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://spin.atomicobject.com/wp-content/uploads/eslint.png",
+    "img_back": "https://example.com/back9.jpg",
+    "img_zoom": "https://example.com/zoom9.jpg",
+    "type_id": 3,
+    "season_id": 2
+  },
+  {
+    "id": 12,
+    "name": "PHP",
+    "price": 10000,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://ih1.redbubble.net/image.557973247.5248/ssrco,classic_tee,mens,101010:01c5ca27c6,front_alt,square_product,600x600.u1.jpg",
+    "img_back": "https://example.com/back9.jpg",
+    "img_zoom": "https://example.com/zoom9.jpg",
+    "type_id": 3,
+    "season_id": 2
+  },
+  {
+    "id": 13,
+    "name": "Ryan Gosling",
+    "price": 200000,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://image.tmdb.org/t/p/original/4X1wJo5xHm3YICPWZqVCPgLBEJ7.jpg",
+    "img_back": "https://example.com/back9.jpg",
+    "img_zoom": "https://example.com/zoom9.jpg",
+    "type_id": 3,
+    "season_id": 2
+  },
+  {
+    "id": 14,
+    "name": "The Rock",
+    "price": 5000000,
+    "description": "100% coton | Coupe normale et unisexe | Couleur noir | Impression numérique | A laver à 30 degrés et à l’envers, ne pas utiliser de sèche linge.",
+    "img_front": "https://www.the-sun.com/wp-content/uploads/sites/6/2020/01/NINTCHDBPICT000398252087.jpg",
+    "img_back": "https://th.bing.com/th/id/OIP.vH4g-ZD_h1oE1RUeD-OlWgAAAA?rs=1&pid=ImgDetMain",
+    "img_zoom": "https://th.bing.com/th/id/OIP.NcnqXaxU84v0IQVOqhK9KAHaFZ?rs=1&pid=ImgDetMain",
+    "type_id": 3,
+    "season_id": 2
+  }
+]

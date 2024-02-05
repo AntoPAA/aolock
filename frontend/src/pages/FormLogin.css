@@ -1,0 +1,56 @@
+.label-form {
+  width: 450px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 1px;
+  border: 1px solid #000000;
+  background: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+
+.label-form:active {
+  border: 1px solid #575153;
+}
+
+.title-login {
+  font-size: 50px;
+}
+
+.form-container {
+  margin-top: 100px;
+}
+.form-connection {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-form {
+  margin-top: 40px;
+}
+
+.connection-button {
+  color: white;
+  font-weight: 300;
+  width: 250px;
+  height: 65px;
+  flex-shrink: 0;
+  border-radius: 1px;
+  background: #000000;
+  border: 0;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.connection-button {
+  cursor: pointer;
+}
+
+.connection-button:active {
+  transform: translateY(4px);
+}
+
+.create-link {
+  color: #575153;
+  margin-bottom: 200px;
+}
